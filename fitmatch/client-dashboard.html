@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitMatch — Mi cuenta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root { --sidebar-w: 240px; }
+  </style>
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">F</div>
+      <span class="logo-text">Fit<span>Match</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" onclick="showSection('entrenador', this)">
+        <span class="nav-icon"><i class="fa-solid fa-dumbbell"></i></span>
+        <span class="nav-label">Mi entrenador</span>
+      </div>
+      <div class="nav-item" onclick="showSection('sesiones', this)">
+        <span class="nav-icon"><i class="fa-solid fa-calendar-days"></i></span>
+        <span class="nav-label">Próximas sesiones</span>
+      </div>
+      <div class="nav-item" onclick="showSection('pagos', this)">
+        <span class="nav-icon"><i class="fa-solid fa-credit-card"></i></span>
+        <span class="nav-label">Pagos y facturas</span>
+      </div>
+      <div class="nav-item" onclick="showSection('mensajes', this)">
+        <span class="nav-icon"><i class="fa-solid fa-comments"></i></span>
+        <span class="nav-label">Mensajes</span>
+        <span class="notif-dot">1</span>
+      </div>
+      <div class="nav-item" onclick="window.location='client-search.html'">
+        <span class="nav-icon"><i class="fa-solid fa-search"></i></span>
+        <span class="nav-label">Buscar entrenador</span>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <img src="https://i.pravatar.cc/40?img=47" class="avatar avatar-md" alt="">
+        <div class="user-info">
+          <div class="user-name">Marta García</div>
+          <div class="user-role">Cliente activa</div>
+        </div>
+        <a href="index.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+    <div class="topbar">
+      <span class="topbar-title" id="topbarTitle">Mi entrenador</span>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="showSection('mensajes',null)">
+          <i class="fa-solid fa-comments"></i>
+          <span class="badge-dot"></span>
+        </button>
+        <img src="https://i.pravatar.cc/38?img=47" class="avatar avatar-sm" style="border:2px solid var(--border);" alt="">
+      </div>
+    </div>
+
+    <div class="page-content">
+
+      <!-- ===== MI ENTRENADOR ===== -->
+      <section class="section active" id="sec-entrenador">
+        <div class="section-header">
+          <h3>Mi entrenador</h3>
+          <a href="client-search.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-search"></i> Buscar otro entrenador</a>
+        </div>
+
+        <!-- Current trainer card -->
+        <div class="card mb-6" style="background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);border:none;color:#fff;">
+          <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+            <div style="position:relative;">
+              <img src="https://i.pravatar.cc/80?img=15" class="avatar avatar-xl" style="border:3px solid rgba(255,255,255,.3);" alt="">
+              <div class="dot dot-green" style="position:absolute;bottom:4px;right:4px;width:14px;height:14px;border:3px solid var(--primary);"></div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:1.375rem;font-weight:800;color:#fff;">Carlos Méndez</div>
+              <div style="color:rgba(255,255,255,.75);margin-top:4px;">Entrenador Personal · Madrid</div>
+              <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;">
+                <span style="font-size:.875rem;color:rgba(255,255,255,.75);"><i class="fa-solid fa-star" style="color:#fcd34d;"></i> 4.9 · 62 reseñas</span>
+                <span style="font-size:.875rem;color:rgba(255,255,255,.75);"><i class="fa-solid fa-clock"></i> Responde en &lt;1h</span>
+                <span style="font-size:.875rem;color:rgba(255,255,255,.75);"><i class="fa-solid fa-calendar-check"></i> Desde hace 6 meses</span>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <button class="btn btn-accent btn-sm" style="color:var(--primary-dark);" onclick="showSection('mensajes',null)">
+                <i class="fa-solid fa-comments"></i> Enviar mensaje
+              </button>
+              <a href="trainer-profile-public.html" class="btn btn-sm" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.25);">
+                <i class="fa-solid fa-user"></i> Ver perfil
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Plan actual -->
+        <div class="grid-2 mb-6">
+          <div class="card">
+            <h5 style="margin-bottom:14px;">Mi plan actual</h5>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+              <div>
+                <div style="font-size:1.125rem;font-weight:700;">Plan Mensual</div>
+                <div style="font-size:.875rem;color:var(--text-muted);margin-top:2px;">4 sesiones/semana · Online y presencial</div>
+              </div>
+              <span class="badge badge-accent">Activo</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--primary-50);border-radius:var(--radius-sm);border:1px solid #b7ddc9;">
+              <div><div style="font-size:.75rem;color:var(--text-muted);">Próximo cobro</div><div style="font-weight:700;font-size:1.125rem;color:var(--primary);">€89 · 26 jun 2025</div></div>
+              <button class="btn btn-outline btn-sm">Gestionar plan</button>
+            </div>
+            <hr class="divider">
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:.875rem;">
+              <div class="flex justify-between"><span class="text-muted">Sesiones completadas</span><strong>48</strong></div>
+              <div class="flex justify-between"><span class="text-muted">Meses consecutivos</span><strong>6</strong></div>
+              <div class="flex justify-between"><span class="text-muted">Método de pago</span><strong>•••• 4821</strong></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h5 style="margin-bottom:14px;">Mi progreso</h5>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">Objetivo: Perder 8kg</span><span class="text-muted">-6kg de 8kg</span></div>
+                <div class="progress-bar"><div class="progress-fill primary" style="width:75%;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">Sesiones esta semana</span><span class="text-muted">3 de 4</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:75%;"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">Constancia (30 días)</span><span class="text-muted">92%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:92%;background:#3b82f6;"></div></div>
+              </div>
+            </div>
+            <hr class="divider">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;">
+              <div><div style="font-size:1.25rem;font-weight:800;color:var(--primary);">48</div><div style="font-size:.75rem;color:var(--text-muted);">Sesiones</div></div>
+              <div><div style="font-size:1.25rem;font-weight:800;color:var(--primary);">-6kg</div><div style="font-size:.75rem;color:var(--text-muted);">Pérdida</div></div>
+              <div><div style="font-size:1.25rem;font-weight:800;color:var(--primary);">92%</div><div style="font-size:.75rem;color:var(--text-muted);">Constancia</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Próxima sesión -->
+        <div class="card">
+          <h5 style="margin-bottom:16px;">Próxima sesión</h5>
+          <div style="display:flex;align-items:center;gap:16px;padding:16px;background:var(--primary-50);border:1px solid #b7ddc9;border-radius:var(--radius);">
+            <div style="text-align:center;padding:12px 16px;background:var(--primary);border-radius:var(--radius-sm);">
+              <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.7);">LUN</div>
+              <div style="font-size:1.75rem;font-weight:900;color:#fff;line-height:1;">26</div>
+              <div style="font-size:.75rem;color:var(--accent);">Mayo</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:1.0625rem;font-weight:700;">Musculación — Pierna</div>
+              <div style="color:var(--text-muted);font-size:.9375rem;margin-top:4px;"><i class="fa-solid fa-clock"></i> 09:00 – 10:00h · <i class="fa-solid fa-video"></i> Online (Zoom)</div>
+              <div style="margin-top:6px;font-size:.875rem;color:var(--text-muted);">Con Carlos Méndez</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <button class="btn btn-primary btn-sm"><i class="fa-solid fa-video"></i> Unirse</button>
+              <button class="btn btn-outline btn-sm">Reprogramar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SESIONES ===== -->
+      <section class="section" id="sec-sesiones">
+        <div class="section-header">
+          <h3>Próximas sesiones</h3>
+          <select class="input" style="width:auto;padding:8px 32px 8px 12px;font-size:.875rem;">
+            <option>Esta semana</option>
+            <option>Próximas 2 semanas</option>
+            <option>Este mes</option>
+          </select>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <!-- Sesión 1 -->
+          <div class="card card-sm" style="display:flex;align-items:center;gap:16px;padding:16px 20px;">
+            <div style="text-align:center;min-width:52px;background:var(--primary-50);border-radius:var(--radius-sm);padding:8px;">
+              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Hoy</div>
+              <div style="font-size:1.375rem;font-weight:900;color:var(--primary);">26</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:700;">Musculación — Pierna</div>
+              <div style="font-size:.875rem;color:var(--text-muted);margin-top:2px;"><i class="fa-solid fa-clock" style="font-size:.8rem;"></i> 09:00 – 10:00h · <i class="fa-solid fa-video" style="font-size:.8rem;"></i> Online</div>
+            </div>
+            <span class="badge badge-blue">Online</span>
+            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-video"></i> Unirse</button>
+          </div>
+
+          <div class="card card-sm" style="display:flex;align-items:center;gap:16px;padding:16px 20px;">
+            <div style="text-align:center;min-width:52px;background:var(--surface-2);border-radius:var(--radius-sm);padding:8px;border:1px solid var(--border);">
+              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Mié</div>
+              <div style="font-size:1.375rem;font-weight:900;color:var(--text);">28</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:700;">Funcional — Core y movilidad</div>
+              <div style="font-size:.875rem;color:var(--text-muted);margin-top:2px;"><i class="fa-solid fa-clock" style="font-size:.8rem;"></i> 18:00 – 19:00h · <i class="fa-solid fa-location-dot" style="font-size:.8rem;"></i> Presencial · Gym Centro</div>
+            </div>
+            <span class="badge badge-accent">Presencial</span>
+            <button class="btn btn-outline btn-sm">Reprogramar</button>
+          </div>
+
+          <div class="card card-sm" style="display:flex;align-items:center;gap:16px;padding:16px 20px;">
+            <div style="text-align:center;min-width:52px;background:var(--surface-2);border-radius:var(--radius-sm);padding:8px;border:1px solid var(--border);">
+              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Vie</div>
+              <div style="font-size:1.375rem;font-weight:900;color:var(--text);">30</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:700;">HIIT — Quema de grasa</div>
+              <div style="font-size:.875rem;color:var(--text-muted);margin-top:2px;"><i class="fa-solid fa-clock" style="font-size:.8rem;"></i> 07:30 – 08:30h · <i class="fa-solid fa-video" style="font-size:.8rem;"></i> Online</div>
+            </div>
+            <span class="badge badge-blue">Online</span>
+            <button class="btn btn-outline btn-sm">Reprogramar</button>
+          </div>
+
+          <div class="card card-sm" style="display:flex;align-items:center;gap:16px;padding:16px 20px;">
+            <div style="text-align:center;min-width:52px;background:var(--surface-2);border-radius:var(--radius-sm);padding:8px;border:1px solid var(--border);">
+              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);">Sáb</div>
+              <div style="font-size:1.375rem;font-weight:900;color:var(--text);">31</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:700;">Musculación — Tren superior</div>
+              <div style="font-size:.875rem;color:var(--text-muted);margin-top:2px;"><i class="fa-solid fa-clock" style="font-size:.8rem;"></i> 10:00 – 11:00h · <i class="fa-solid fa-location-dot" style="font-size:.8rem;"></i> Presencial · Gym Centro</div>
+            </div>
+            <span class="badge badge-accent">Presencial</span>
+            <button class="btn btn-outline btn-sm">Reprogramar</button>
+          </div>
+        </div>
+
+        <!-- Historial -->
+        <div class="card mt-6" style="padding:0;">
+          <div style="padding:20px 24px 14px;display:flex;justify-content:space-between;align-items:center;">
+            <h5>Historial de sesiones</h5>
+            <span style="font-size:.875rem;color:var(--text-muted);">48 sesiones completadas</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Fecha</th><th>Tipo</th><th>Modalidad</th><th>Duración</th><th>Estado</th></tr></thead>
+              <tbody>
+                <tr><td>23 mayo 2025</td><td>Musculación — Pierna</td><td><span class="badge badge-blue">Online</span></td><td>60 min</td><td><span class="badge badge-accent">Completada</span></td></tr>
+                <tr><td>21 mayo 2025</td><td>Funcional</td><td><span class="badge badge-accent">Presencial</span></td><td>60 min</td><td><span class="badge badge-accent">Completada</span></td></tr>
+                <tr><td>19 mayo 2025</td><td>HIIT</td><td><span class="badge badge-blue">Online</span></td><td>60 min</td><td><span class="badge badge-accent">Completada</span></td></tr>
+                <tr><td>17 mayo 2025</td><td>Musculación — Tren superior</td><td><span class="badge badge-accent">Presencial</span></td><td>60 min</td><td><span class="badge badge-accent">Completada</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PAGOS ===== -->
+      <section class="section" id="sec-pagos">
+        <div class="section-header">
+          <h3>Pagos y facturas</h3>
+          <button class="btn btn-outline btn-sm"><i class="fa-solid fa-download"></i> Descargar todas</button>
+        </div>
+
+        <!-- Resumen -->
+        <div class="grid-3 mb-6">
+          <div class="metric-card">
+            <div class="metric-icon green"><i class="fa-solid fa-euro-sign"></i></div>
+            <div><div class="metric-value">€89</div><div class="metric-label">Próximo pago</div><div class="metric-change" style="color:var(--text-muted);">26 junio 2025</div></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon blue"><i class="fa-solid fa-receipt"></i></div>
+            <div><div class="metric-value">€534</div><div class="metric-label">Total pagado</div><div class="metric-change up">6 meses</div></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon purple"><i class="fa-solid fa-credit-card"></i></div>
+            <div><div class="metric-value">•••• 4821</div><div class="metric-label">Método de pago</div><div class="metric-change" style="color:var(--text-muted);">Visa · Caduca 04/27</div></div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:0;">
+          <div style="padding:20px 24px 14px;border-bottom:1px solid var(--border);">
+            <h5>Historial de pagos</h5>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Fecha</th><th>Concepto</th><th>Importe</th><th>Estado</th><th>Factura</th></tr></thead>
+              <tbody>
+                <tr><td>26 mayo 2025</td><td>Plan Mensual — Carlos Méndez</td><td style="font-weight:700;">€89</td><td><span class="badge badge-accent">Pagado</span></td><td><button class="btn btn-ghost btn-sm"><i class="fa-solid fa-download" style="font-size:.8rem;"></i></button></td></tr>
+                <tr><td>26 abr 2025</td><td>Plan Mensual — Carlos Méndez</td><td style="font-weight:700;">€89</td><td><span class="badge badge-accent">Pagado</span></td><td><button class="btn btn-ghost btn-sm"><i class="fa-solid fa-download" style="font-size:.8rem;"></i></button></td></tr>
+                <tr><td>26 mar 2025</td><td>Plan Mensual — Carlos Méndez</td><td style="font-weight:700;">€89</td><td><span class="badge badge-accent">Pagado</span></td><td><button class="btn btn-ghost btn-sm"><i class="fa-solid fa-download" style="font-size:.8rem;"></i></button></td></tr>
+                <tr><td>26 feb 2025</td><td>Plan Mensual — Carlos Méndez</td><td style="font-weight:700;">€89</td><td><span class="badge badge-accent">Pagado</span></td><td><button class="btn btn-ghost btn-sm"><i class="fa-solid fa-download" style="font-size:.8rem;"></i></button></td></tr>
+                <tr><td>26 ene 2025</td><td>Plan Mensual — Carlos Méndez</td><td style="font-weight:700;">€89</td><td><span class="badge badge-accent">Pagado</span></td><td><button class="btn btn-ghost btn-sm"><i class="fa-solid fa-download" style="font-size:.8rem;"></i></button></td></tr>
+                <tr><td>26 dic 2024</td><td>Plan Mensual — Carlos Méndez</td><td style="font-weight:700;">€89</td><td><span class="badge badge-accent">Pagado</span></td><td><button class="btn btn-ghost btn-sm"><i class="fa-solid fa-download" style="font-size:.8rem;"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Propuesta de precio recibida -->
+        <div class="card mt-4" style="background:var(--yellow-bg);border-color:var(--yellow-border);">
+          <div style="display:flex;align-items:flex-start;gap:14px;">
+            <div class="notif-icon-wrap alert" style="flex-shrink:0;"><i class="fa-solid fa-tag"></i></div>
+            <div style="flex:1;">
+              <div style="font-weight:700;color:var(--yellow-text);margin-bottom:4px;">💰 Propuesta de precio personalizada</div>
+              <div style="font-size:.9375rem;color:var(--yellow-text);opacity:.9;">Carlos Méndez te ha enviado una propuesta de plan trimestral por <strong>€230</strong> (ahorro de €37). Incluye plan de nutrición.</div>
+              <div style="display:flex;gap:8px;margin-top:12px;">
+                <button class="btn btn-sm" style="background:var(--yellow-text);color:#fff;">Aceptar propuesta</button>
+                <button class="btn btn-outline btn-sm" onclick="showSection('mensajes',null)">Negociar</button>
+                <button class="btn btn-ghost btn-sm">Rechazar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MENSAJES ===== -->
+      <section class="section" id="sec-mensajes">
+        <div class="section-header mb-4">
+          <h3>Mensajes</h3>
+        </div>
+        <div class="chat-layout" style="height:calc(100vh - 160px);">
+          <div class="chat-list">
+            <div class="chat-list-header">
+              <div style="font-size:.8125rem;font-weight:600;color:var(--text-muted);">Conversaciones</div>
+            </div>
+            <div class="chat-item active">
+              <img src="https://i.pravatar.cc/42?img=15" class="avatar avatar-md" alt="">
+              <div class="chat-item-info">
+                <div class="chat-item-name">Carlos Méndez <span style="font-size:.75rem;color:var(--accent-dark);font-weight:600;">Entrenador</span></div>
+                <div class="chat-item-preview">¡Perfecto, nos vemos mañana!</div>
+              </div>
+              <div class="chat-item-meta">
+                <div class="chat-item-time">12:34</div>
+                <span class="notif-dot" style="margin-top:4px;">1</span>
+              </div>
+            </div>
+            <div style="padding:20px 16px;text-align:center;">
+              <p style="font-size:.8125rem;color:var(--text-muted);">¿Buscas otro entrenador?</p>
+              <a href="client-search.html" class="btn btn-outline btn-sm mt-2">Explorar entrenadores</a>
+            </div>
+          </div>
+          <div class="chat-area">
+            <div class="chat-header">
+              <img src="https://i.pravatar.cc/42?img=15" class="avatar avatar-md" alt="">
+              <div>
+                <div style="font-weight:700;">Carlos Méndez</div>
+                <div style="font-size:.8125rem;color:var(--success);display:flex;align-items:center;gap:4px;"><span class="dot dot-green"></span> En línea</div>
+              </div>
+              <div class="flex gap-2 ml-auto">
+                <a href="trainer-profile-public.html" class="icon-btn" title="Ver perfil"><i class="fa-solid fa-user"></i></a>
+              </div>
+            </div>
+            <div class="chat-messages">
+              <div style="text-align:center;margin:12px 0;"><span style="background:var(--surface-2);border:1px solid var(--border);border-radius:20px;padding:4px 14px;font-size:.75rem;color:var(--text-muted);">Hoy</span></div>
+              <div class="message theirs"><div class="message-bubble">¡Hola Marta! ¿Cómo te fue con el entreno de ayer?</div><div class="message-time">09:10</div></div>
+              <div class="message mine"><div class="message-bubble">Muy bien! Me costó la sentadilla pero aguanté todo. Noto que mejora 💪</div><div class="message-time">09:15</div></div>
+              <div class="message theirs"><div class="message-bubble">¡Genial! Eso es exactamente lo que queremos. Esta semana vamos a añadir más volumen en pierna.</div><div class="message-time">09:18</div></div>
+              <div class="message theirs">
+                <div class="proposal-card">
+                  <div class="proposal-label">💰 Propuesta de precio</div>
+                  <div class="proposal-amount">€230<span style="font-size:.875rem;font-weight:500;color:var(--text-muted);">/trimestre</span></div>
+                  <div style="font-size:.875rem;color:var(--text-muted);margin-top:6px;">Incluye plan de nutrición personalizado. ¡Ahorras €37!</div>
+                  <div class="proposal-actions">
+                    <button class="btn btn-accent btn-sm" style="color:var(--primary-dark);">Aceptar</button>
+                    <button class="btn btn-outline btn-sm">Negociar</button>
+                  </div>
+                </div>
+                <div class="message-time">11:45</div>
+              </div>
+              <div class="message mine"><div class="message-bubble">¡Me lo pienso! Tiene muy buena pinta 👍</div><div class="message-time">12:02</div></div>
+              <div class="message theirs"><div class="message-bubble">¡Perfecto, nos vemos mañana a las 9! Descansa bien esta noche 😊</div><div class="message-time">12:34</div></div>
+            </div>
+            <div class="chat-input-area">
+              <textarea class="chat-input" placeholder="Escribe un mensaje..." rows="1" onkeydown="sendMessage(event)"></textarea>
+              <button class="btn btn-primary" onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  const sections = {
+    'entrenador': { el: 'sec-entrenador', title: 'Mi entrenador' },
+    'sesiones':   { el: 'sec-sesiones',   title: 'Próximas sesiones' },
+    'pagos':      { el: 'sec-pagos',      title: 'Pagos y facturas' },
+    'mensajes':   { el: 'sec-mensajes',   title: 'Mensajes' },
+  };
+
+  function showSection(key, navEl) {
+    Object.values(sections).forEach(s => document.getElementById(s.el).classList.remove('active'));
+    document.getElementById(sections[key].el).classList.add('active');
+    document.getElementById('topbarTitle').textContent = sections[key].title;
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    if (navEl) navEl.classList.add('active');
+    else {
+      document.querySelectorAll('.nav-item').forEach(n => {
+        if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'" + key + "'")) n.classList.add('active');
+      });
+    }
+    window.scrollTo(0, 0);
+  }
+
+  function sendChatMessage() {
+    const ta = document.querySelector('.chat-input');
+    const txt = ta.value.trim();
+    if (!txt) return;
+    const msgs = document.querySelector('.chat-messages');
+    const div = document.createElement('div');
+    div.className = 'message mine';
+    div.innerHTML = `<div class="message-bubble">${txt}</div><div class="message-time">${new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})}</div>`;
+    msgs.appendChild(div);
+    ta.value = '';
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function sendMessage(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
+  }
+</script>
+</body>
+</html>

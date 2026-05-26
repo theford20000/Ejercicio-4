@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitMatch — Panel del Entrenador</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-mark">F</div>
+      <span class="logo-text">Fit<span>Match</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Principal</div>
+      <div class="nav-item active" onclick="showSection('inicio', this)">
+        <span class="nav-icon"><i class="fa-solid fa-gauge-high"></i></span>
+        <span class="nav-label">Inicio</span>
+      </div>
+      <div class="nav-item" onclick="showSection('clientes', this)">
+        <span class="nav-icon"><i class="fa-solid fa-users"></i></span>
+        <span class="nav-label">Mis clientes</span>
+        <span class="badge badge-accent" style="font-size:.65rem;padding:1px 7px;">24</span>
+      </div>
+      <div class="nav-item" onclick="showSection('agenda', this)">
+        <span class="nav-icon"><i class="fa-solid fa-calendar-days"></i></span>
+        <span class="nav-label">Agenda</span>
+      </div>
+      <div class="nav-item" onclick="showSection('planes', this)">
+        <span class="nav-icon"><i class="fa-solid fa-credit-card"></i></span>
+        <span class="nav-label">Planes y pagos</span>
+      </div>
+      <div class="nav-item" onclick="showSection('estadisticas', this)">
+        <span class="nav-icon"><i class="fa-solid fa-chart-line"></i></span>
+        <span class="nav-label">Estadísticas</span>
+      </div>
+
+      <div class="nav-section-label">Comunicación</div>
+      <div class="nav-item" onclick="showSection('mensajes', this)">
+        <span class="nav-icon"><i class="fa-solid fa-comments"></i></span>
+        <span class="nav-label">Mensajes</span>
+        <span class="notif-dot">3</span>
+      </div>
+      <div class="nav-item" onclick="showSection('notificaciones', this)">
+        <span class="nav-icon"><i class="fa-solid fa-bell"></i></span>
+        <span class="nav-label">Notificaciones</span>
+        <span class="notif-dot">7</span>
+      </div>
+
+      <div class="nav-section-label">Perfil</div>
+      <div class="nav-item" onclick="showSection('perfil', this)">
+        <span class="nav-icon"><i class="fa-solid fa-id-card"></i></span>
+        <span class="nav-label">Mi perfil público</span>
+      </div>
+      <div class="nav-item" onclick="showSection('ajustes', this)">
+        <span class="nav-icon"><i class="fa-solid fa-gear"></i></span>
+        <span class="nav-label">Ajustes</span>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <img src="https://i.pravatar.cc/40?img=15" class="avatar avatar-md" alt="">
+        <div class="user-info">
+          <div class="user-name">Carlos Méndez</div>
+          <div class="user-role">Plan Pro · Activo</div>
+        </div>
+        <a href="index.html" class="logout-btn" title="Cerrar sesión"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+    <div class="topbar">
+      <span class="topbar-title" id="topbarTitle">Inicio</span>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="showSection('notificaciones', null)">
+          <i class="fa-solid fa-bell"></i>
+          <span class="badge-dot"></span>
+        </button>
+        <button class="icon-btn" onclick="showSection('mensajes', null)">
+          <i class="fa-solid fa-comments"></i>
+          <span class="badge-dot"></span>
+        </button>
+        <a href="trainer-profile-public.html">
+          <img src="https://i.pravatar.cc/38?img=15" class="avatar avatar-sm" style="cursor:pointer;border:2px solid var(--border);" alt="">
+        </a>
+      </div>
+    </div>
+
+    <div class="page-content">
+
+      <!-- ===== INICIO ===== -->
+      <section class="section active" id="sec-inicio">
+        <div class="section-header">
+          <div>
+            <h3>¡Buenos días, Carlos! 👋</h3>
+            <p style="margin-top:2px;">Aquí tienes el resumen de tu negocio esta semana.</p>
+          </div>
+          <a href="trainer-profile-public.html" class="btn btn-outline btn-sm">
+            <i class="fa-solid fa-eye"></i> Ver mi perfil público
+          </a>
+        </div>
+
+        <!-- Metrics -->
+        <div class="grid-4 mb-6">
+          <div class="metric-card">
+            <div class="metric-icon green"><i class="fa-solid fa-users"></i></div>
+            <div>
+              <div class="metric-value">24</div>
+              <div class="metric-label">Clientes activos</div>
+              <div class="metric-change up">▲ +2 este mes</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon blue"><i class="fa-solid fa-euro-sign"></i></div>
+            <div>
+              <div class="metric-value">€2.840</div>
+              <div class="metric-label">Ingresos del mes</div>
+              <div class="metric-change up">▲ +12% vs mes anterior</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon yellow"><i class="fa-solid fa-hourglass-half"></i></div>
+            <div>
+              <div class="metric-value">3</div>
+              <div class="metric-label">Pruebas en curso</div>
+              <div class="metric-change" style="color:var(--warning);">2 expiran esta semana</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon purple"><i class="fa-solid fa-star"></i></div>
+            <div>
+              <div class="metric-value">4.8</div>
+              <div class="metric-label">Valoración media</div>
+              <div class="metric-change up">▲ 62 reseñas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Actividad reciente -->
+          <div class="card">
+            <div class="section-header mb-4">
+              <h5>Actividad reciente</h5>
+              <button class="btn btn-ghost btn-sm" onclick="showSection('notificaciones', null)">Ver todas</button>
+            </div>
+            <div class="notif-item" style="padding:12px 0;border-bottom:1px solid var(--border-light);">
+              <div class="notif-icon-wrap money" style="width:36px;height:36px;font-size:.9rem;"><i class="fa-solid fa-euro-sign"></i></div>
+              <div class="notif-content">
+                <div class="notif-text"><strong>Marta García</strong> pagó su plan mensual</div>
+                <div class="notif-time">Hace 12 min · <strong style="color:var(--success);">+€89</strong></div>
+              </div>
+            </div>
+            <div class="notif-item" style="padding:12px 0;border-bottom:1px solid var(--border-light);">
+              <div class="notif-icon-wrap user" style="width:36px;height:36px;font-size:.9rem;"><i class="fa-solid fa-user-plus"></i></div>
+              <div class="notif-content">
+                <div class="notif-text"><strong>Ana Ruiz</strong> está interesada en contratarte</div>
+                <div class="notif-time">Hace 1h · Nuevo contacto</div>
+              </div>
+            </div>
+            <div class="notif-item" style="padding:12px 0;border-bottom:1px solid var(--border-light);">
+              <div class="notif-icon-wrap msg" style="width:36px;height:36px;font-size:.9rem;"><i class="fa-solid fa-comment"></i></div>
+              <div class="notif-content">
+                <div class="notif-text"><strong>Roberto Díaz</strong> te ha enviado un mensaje</div>
+                <div class="notif-time">Hace 2h</div>
+              </div>
+            </div>
+            <div class="notif-item" style="padding:12px 0;border-bottom:1px solid var(--border-light);">
+              <div class="notif-icon-wrap alert" style="width:36px;height:36px;font-size:.9rem;"><i class="fa-solid fa-clock"></i></div>
+              <div class="notif-content">
+                <div class="notif-text">Prueba de <strong>Luis Fernández</strong> expira mañana</div>
+                <div class="notif-time">Recuérdalo hoy</div>
+              </div>
+            </div>
+            <div class="notif-item" style="padding:12px 0;">
+              <div class="notif-icon-wrap money" style="width:36px;height:36px;font-size:.9rem;"><i class="fa-solid fa-euro-sign"></i></div>
+              <div class="notif-content">
+                <div class="notif-text"><strong>Sofía López</strong> renovó plan trimestral</div>
+                <div class="notif-time">Ayer · <strong style="color:var(--success);">+€240</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sesiones de hoy -->
+          <div class="card">
+            <div class="section-header mb-4">
+              <h5>Sesiones de hoy <span style="font-size:.8rem;color:var(--text-muted);font-weight:400;">lunes, 26 mayo</span></h5>
+              <button class="btn btn-ghost btn-sm" onclick="showSection('agenda', null)">Ver agenda</button>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--primary-50);border-radius:var(--radius-sm);border:1px solid #b7ddc9;">
+                <div style="text-align:center;min-width:44px;"><div style="font-size:.7rem;color:var(--text-muted);">09:00</div><div style="font-size:.7rem;color:var(--text-muted);">10:00</div></div>
+                <img src="https://i.pravatar.cc/36?img=47" class="avatar avatar-sm" alt="">
+                <div style="flex:1;"><div style="font-weight:600;font-size:.9375rem;">Marta García</div><div style="font-size:.8125rem;color:var(--text-muted);">Musculación</div></div>
+                <span class="badge badge-blue">Online</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                <div style="text-align:center;min-width:44px;"><div style="font-size:.7rem;color:var(--text-muted);">11:30</div><div style="font-size:.7rem;color:var(--text-muted);">12:30</div></div>
+                <img src="https://i.pravatar.cc/36?img=32" class="avatar avatar-sm" alt="">
+                <div style="flex:1;"><div style="font-weight:600;font-size:.9375rem;">Roberto Díaz</div><div style="font-size:.8125rem;color:var(--text-muted);">Funcional</div></div>
+                <span class="badge badge-accent">Presencial</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                <div style="text-align:center;min-width:44px;"><div style="font-size:.7rem;color:var(--text-muted);">17:00</div><div style="font-size:.7rem;color:var(--text-muted);">18:00</div></div>
+                <img src="https://i.pravatar.cc/36?img=5" class="avatar avatar-sm" alt="">
+                <div style="flex:1;"><div style="font-weight:600;font-size:.9375rem;">Ana Ruiz</div><div style="font-size:.8125rem;color:var(--text-muted);">Pilates · 1ª semana prueba</div></div>
+                <span class="badge badge-blue">Online</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
+                <div style="text-align:center;min-width:44px;"><div style="font-size:.7rem;color:var(--text-muted);">19:30</div><div style="font-size:.7rem;color:var(--text-muted);">20:30</div></div>
+                <img src="https://i.pravatar.cc/36?img=20" class="avatar avatar-sm" alt="">
+                <div style="flex:1;"><div style="font-weight:600;font-size:.9375rem;">Sofía López</div><div style="font-size:.8125rem;color:var(--text-muted);">HIIT · Trimestral</div></div>
+                <span class="badge badge-accent">Presencial</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick stats row -->
+        <div class="grid-4 mt-4">
+          <div class="card card-sm" style="text-align:center;">
+            <div style="font-size:1.375rem;font-weight:800;color:var(--primary);">89%</div>
+            <div style="font-size:.8125rem;color:var(--text-muted);margin-top:2px;">Retención mensual</div>
+          </div>
+          <div class="card card-sm" style="text-align:center;">
+            <div style="font-size:1.375rem;font-weight:800;color:var(--primary);">96</div>
+            <div style="font-size:.8125rem;color:var(--text-muted);margin-top:2px;">Sesiones este mes</div>
+          </div>
+          <div class="card card-sm" style="text-align:center;">
+            <div style="font-size:1.375rem;font-weight:800;color:var(--primary);">&lt;45min</div>
+            <div style="font-size:.8125rem;color:var(--text-muted);margin-top:2px;">Tiempo de respuesta</div>
+          </div>
+          <div class="card card-sm" style="text-align:center;">
+            <div style="font-size:1.375rem;font-weight:800;color:var(--primary);">€118</div>
+            <div style="font-size:.8125rem;color:var(--text-muted);margin-top:2px;">Ingreso medio/cliente</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CLIENTES ===== -->
+      <section class="section" id="sec-clientes">
+        <div class="section-header">
+          <div>
+            <h3>Mis clientes</h3>
+            <p style="margin-top:2px;">24 clientes activos · 3 en prueba · 2 pendientes</p>
+          </div>
+          <div class="flex gap-2">
+            <div class="input-search" style="width:220px;">
+              <span class="search-icon"><i class="fa-solid fa-search" style="font-size:.875rem;"></i></span>
+              <input type="text" class="input input-sm" placeholder="Buscar cliente..." style="padding:8px 8px 8px 36px;font-size:.875rem;" oninput="filterClients(this.value)">
+            </div>
+            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Añadir cliente</button>
+          </div>
+        </div>
+
+        <div class="flex gap-2 mb-4">
+          <button class="chip active" onclick="filterByStatus('todos', this)">Todos (29)</button>
+          <button class="chip" onclick="filterByStatus('activo', this)">Activos (24)</button>
+          <button class="chip" onclick="filterByStatus('prueba', this)">En prueba (3)</button>
+          <button class="chip" onclick="filterByStatus('pendiente', this)">Pendientes (2)</button>
+        </div>
+
+        <div class="card" style="padding:0;">
+          <div class="table-wrap">
+            <table id="clientsTable">
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Estado</th>
+                  <th>Plan</th>
+                  <th>Disciplina</th>
+                  <th>Próx. sesión</th>
+                  <th>Pago</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-status="activo"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=47" class="avatar avatar-sm" alt=""><span class="font-medium">Marta García</span></div></td><td><span class="badge badge-accent">Activo</span></td><td>Mensual</td><td>Musculación</td><td>Hoy 09:00</td><td style="color:var(--success);font-weight:600;">€89/mes</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+                <tr data-status="activo"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=32" class="avatar avatar-sm" alt=""><span class="font-medium">Roberto Díaz</span></div></td><td><span class="badge badge-accent">Activo</span></td><td>Mensual</td><td>Funcional</td><td>Hoy 11:30</td><td style="color:var(--success);font-weight:600;">€79/mes</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+                <tr data-status="prueba"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=5" class="avatar avatar-sm" alt=""><span class="font-medium">Ana Ruiz</span></div></td><td><span class="badge badge-yellow">Prueba</span></td><td>— (prueba)</td><td>Pilates</td><td>Hoy 17:00</td><td style="color:var(--warning);font-weight:600;">Gratis 5 días</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+                <tr data-status="activo"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=20" class="avatar avatar-sm" alt=""><span class="font-medium">Sofía López</span></div></td><td><span class="badge badge-accent">Activo</span></td><td>Trimestral</td><td>HIIT</td><td>Hoy 19:30</td><td style="color:var(--success);font-weight:600;">€240/trim.</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+                <tr data-status="activo"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=60" class="avatar avatar-sm" alt=""><span class="font-medium">Luis Fernández</span></div></td><td><span class="badge badge-accent">Activo</span></td><td>Mensual</td><td>Crossfit</td><td>Mar 10:00</td><td style="color:var(--success);font-weight:600;">€99/mes</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+                <tr data-status="prueba"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=44" class="avatar avatar-sm" alt=""><span class="font-medium">Carmen Vega</span></div></td><td><span class="badge badge-yellow">Prueba</span></td><td>— (prueba)</td><td>Yoga</td><td>Mar 18:00</td><td style="color:var(--warning);font-weight:600;">Gratis 2 días</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+                <tr data-status="activo"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=33" class="avatar avatar-sm" alt=""><span class="font-medium">Miguel Santos</span></div></td><td><span class="badge badge-accent">Activo</span></td><td>Personalizado</td><td>Natación</td><td>Jue 08:00</td><td style="color:var(--success);font-weight:600;">€110/mes</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+                <tr data-status="pendiente"><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/32?img=9" class="avatar avatar-sm" alt=""><span class="font-medium">Elena Morales</span></div></td><td><span class="badge badge-gray">Pendiente</span></td><td>—</td><td>Musculación</td><td>—</td><td style="color:var(--text-muted);">Negociando</td><td><button class="btn btn-ghost btn-sm" onclick="showSection('mensajes',null)"><i class="fa-solid fa-comment"></i></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="padding:14px 16px;border-top:1px solid var(--border-light);font-size:.875rem;color:var(--text-muted);">Mostrando 8 de 29 clientes</div>
+        </div>
+      </section>
+
+      <!-- ===== AGENDA ===== -->
+      <section class="section" id="sec-agenda">
+        <div class="section-header">
+          <div>
+            <h3>Agenda</h3>
+            <p style="margin-top:2px;">Semana del 26 mayo — 1 junio 2025</p>
+          </div>
+          <div class="flex gap-2">
+            <button class="btn btn-outline btn-sm"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="btn btn-outline btn-sm">Hoy</button>
+            <button class="btn btn-outline btn-sm"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Nueva sesión</button>
+          </div>
+        </div>
+        <div class="calendar-grid">
+          <div class="cal-day"><div class="cal-day-header">Lun</div><div class="cal-day-content today"><div class="cal-day-num flex items-center justify-center" style="width:22px;height:22px;background:var(--primary);color:#fff;border-radius:50%;font-size:.75rem;margin-bottom:6px;">26</div><div class="cal-event online">09:00 Marta G.</div><div class="cal-event presencial">11:30 Roberto D.</div><div class="cal-event online">17:00 Ana R.</div><div class="cal-event presencial">19:30 Sofía L.</div></div></div>
+          <div class="cal-day"><div class="cal-day-header">Mar</div><div class="cal-day-content"><div class="cal-day-num">27</div><div class="cal-event online">10:00 Luis F.</div><div class="cal-event presencial">18:00 Carmen V.</div></div></div>
+          <div class="cal-day"><div class="cal-day-header">Mié</div><div class="cal-day-content"><div class="cal-day-num">28</div><div class="cal-event online">09:30 Marta G.</div><div class="cal-event presencial">12:00 Miguel S.</div><div class="cal-event online">16:00 Roberto D.</div></div></div>
+          <div class="cal-day"><div class="cal-day-header">Jue</div><div class="cal-day-content"><div class="cal-day-num">29</div><div class="cal-event online">08:00 Miguel S.</div><div class="cal-event presencial">19:00 Sofía L.</div></div></div>
+          <div class="cal-day"><div class="cal-day-header">Vie</div><div class="cal-day-content"><div class="cal-day-num">30</div><div class="cal-event online">10:00 Luis F.</div><div class="cal-event presencial">11:30 Carmen V.</div><div class="cal-event online">18:30 Ana R.</div></div></div>
+          <div class="cal-day"><div class="cal-day-header">Sáb</div><div class="cal-day-content"><div class="cal-day-num">31</div><div class="cal-event presencial">10:00 Marta G.</div></div></div>
+          <div class="cal-day"><div class="cal-day-header">Dom</div><div class="cal-day-content"><div class="cal-day-num">1</div></div></div>
+        </div>
+        <div class="flex gap-3 mt-3">
+          <div class="flex items-center gap-2"><div style="width:12px;height:12px;border-radius:3px;background:#dbeafe;"></div><span style="font-size:.8125rem;color:var(--text-muted);">Online</span></div>
+          <div class="flex items-center gap-2"><div style="width:12px;height:12px;border-radius:3px;background:#dcfce7;"></div><span style="font-size:.8125rem;color:var(--text-muted);">Presencial</span></div>
+        </div>
+
+        <!-- Upcoming list -->
+        <div class="card mt-4">
+          <h5 style="margin-bottom:16px;">Próximas sesiones</h5>
+          <div style="display:flex;flex-direction:column;gap:0;">
+            <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border-light);">
+              <div style="width:56px;text-align:center;"><div style="font-size:.75rem;color:var(--text-muted);font-weight:600;">MAR</div><div style="font-size:1.25rem;font-weight:800;color:var(--primary);">27</div></div>
+              <div style="width:1px;height:40px;background:var(--border);"></div>
+              <img src="https://i.pravatar.cc/36?img=60" class="avatar avatar-sm" alt="">
+              <div style="flex:1;"><div style="font-weight:600;">Luis Fernández</div><div style="font-size:.8125rem;color:var(--text-muted);">Crossfit · 10:00 – 11:00</div></div>
+              <span class="badge badge-blue">Online</span>
+              <button class="btn btn-outline btn-sm">Gestionar</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border-light);">
+              <div style="width:56px;text-align:center;"><div style="font-size:.75rem;color:var(--text-muted);font-weight:600;">MAR</div><div style="font-size:1.25rem;font-weight:800;color:var(--primary);">27</div></div>
+              <div style="width:1px;height:40px;background:var(--border);"></div>
+              <img src="https://i.pravatar.cc/36?img=44" class="avatar avatar-sm" alt="">
+              <div style="flex:1;"><div style="font-weight:600;">Carmen Vega</div><div style="font-size:.8125rem;color:var(--text-muted);">Yoga · 18:00 – 19:00</div></div>
+              <span class="badge badge-accent">Presencial</span>
+              <button class="btn btn-outline btn-sm">Gestionar</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:12px 0;">
+              <div style="width:56px;text-align:center;"><div style="font-size:.75rem;color:var(--text-muted);font-weight:600;">MIÉ</div><div style="font-size:1.25rem;font-weight:800;color:var(--primary);">28</div></div>
+              <div style="width:1px;height:40px;background:var(--border);"></div>
+              <img src="https://i.pravatar.cc/36?img=47" class="avatar avatar-sm" alt="">
+              <div style="flex:1;"><div style="font-weight:600;">Marta García</div><div style="font-size:.8125rem;color:var(--text-muted);">Musculación · 09:30 – 10:30</div></div>
+              <span class="badge badge-blue">Online</span>
+              <button class="btn btn-outline btn-sm">Gestionar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PLANES Y PAGOS ===== -->
+      <section class="section" id="sec-planes">
+        <div class="section-header">
+          <h3>Planes y pagos</h3>
+          <button class="btn btn-primary btn-sm"><i class="fa-solid fa-plus"></i> Crear plan</button>
+        </div>
+
+        <!-- Mis planes -->
+        <div class="card mb-6">
+          <div class="section-header mb-4">
+            <h5>Mis planes</h5>
+            <label class="toggle">
+              <input type="checkbox" checked id="toggleFree">
+              <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              <span class="toggle-label" style="font-size:.875rem;">Semana gratis activa</span>
+            </label>
+          </div>
+          <div class="grid-3">
+            <div class="plan-card featured">
+              <div class="plan-badge-top"><span class="badge badge-accent">Más vendido</span></div>
+              <h5>Plan Mensual</h5>
+              <div class="plan-price mt-2"><sup>€</sup>89</div>
+              <div class="plan-period">al mes</div>
+              <div class="plan-features">
+                <div class="plan-feature"><span class="check">✓</span> 4 sesiones/semana</div>
+                <div class="plan-feature"><span class="check">✓</span> Online o presencial</div>
+                <div class="plan-feature"><span class="check">✓</span> Plan personalizado</div>
+                <div class="plan-feature"><span class="check">✓</span> Seguimiento semanal</div>
+              </div>
+              <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:.8125rem;color:var(--text-muted);">18 clientes</span>
+                <button class="btn btn-outline btn-sm">Editar</button>
+              </div>
+            </div>
+            <div class="plan-card">
+              <h5>Plan Trimestral</h5>
+              <div class="plan-price mt-2"><sup>€</sup>240</div>
+              <div class="plan-period">cada 3 meses</div>
+              <div class="plan-features">
+                <div class="plan-feature"><span class="check">✓</span> Todo el plan mensual</div>
+                <div class="plan-feature"><span class="check">✓</span> Ahorra €27</div>
+                <div class="plan-feature"><span class="check">✓</span> Plan de nutrición</div>
+                <div class="plan-feature"><span class="check">✓</span> Análisis de progreso</div>
+              </div>
+              <div style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-size:.8125rem;color:var(--text-muted);">5 clientes</span>
+                <button class="btn btn-outline btn-sm">Editar</button>
+              </div>
+            </div>
+            <div class="plan-card" style="border-style:dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:220px;cursor:pointer;transition:all var(--transition);" onmouseover="this.style.background='var(--primary-50)'" onmouseout="this.style.background=''">
+              <i class="fa-solid fa-plus" style="font-size:1.5rem;color:var(--text-light);margin-bottom:10px;"></i>
+              <div style="font-weight:600;color:var(--text-muted);">Crear plan personalizado</div>
+              <div style="font-size:.8125rem;color:var(--text-light);margin-top:4px;">Para clientes con necesidades específicas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Historial de cobros -->
+        <div class="card" style="padding:0;">
+          <div class="section-header" style="padding:20px 24px 16px;">
+            <h5>Historial de cobros</h5>
+            <button class="btn btn-outline btn-sm"><i class="fa-solid fa-download"></i> Exportar</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Cliente</th><th>Plan</th><th>Importe</th><th>Fecha</th><th>Estado</th></tr></thead>
+              <tbody>
+                <tr><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/28?img=47" class="avatar" style="width:28px;height:28px;" alt="">Marta García</div></td><td>Mensual</td><td style="font-weight:700;color:var(--success);">+€89</td><td>26 mayo 2025</td><td><span class="badge badge-accent">Cobrado</span></td></tr>
+                <tr><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/28?img=20" class="avatar" style="width:28px;height:28px;" alt="">Sofía López</div></td><td>Trimestral</td><td style="font-weight:700;color:var(--success);">+€240</td><td>25 mayo 2025</td><td><span class="badge badge-accent">Cobrado</span></td></tr>
+                <tr><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/28?img=60" class="avatar" style="width:28px;height:28px;" alt="">Luis Fernández</div></td><td>Mensual</td><td style="font-weight:700;color:var(--success);">+€99</td><td>23 mayo 2025</td><td><span class="badge badge-accent">Cobrado</span></td></tr>
+                <tr><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/28?img=32" class="avatar" style="width:28px;height:28px;" alt="">Roberto Díaz</div></td><td>Mensual</td><td style="font-weight:700;color:var(--success);">+€79</td><td>22 mayo 2025</td><td><span class="badge badge-accent">Cobrado</span></td></tr>
+                <tr><td><div class="flex items-center gap-2"><img src="https://i.pravatar.cc/28?img=33" class="avatar" style="width:28px;height:28px;" alt="">Miguel Santos</div></td><td>Personalizado</td><td style="font-weight:700;color:var(--warning);">€110</td><td>20 mayo 2025</td><td><span class="badge badge-warning">Pendiente</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="padding:14px 24px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;font-size:.875rem;color:var(--text-muted);">
+            <span>Mayo 2025 · 5 transacciones</span>
+            <span style="font-weight:700;color:var(--success);">Total cobrado: <strong>€507</strong></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ESTADÍSTICAS ===== -->
+      <section class="section" id="sec-estadisticas">
+        <div class="section-header">
+          <h3>Estadísticas</h3>
+          <select class="input" style="width:auto;padding:8px 32px 8px 12px;font-size:.875rem;">
+            <option>Últimos 6 meses</option>
+            <option>Últimos 3 meses</option>
+            <option>Este año</option>
+          </select>
+        </div>
+
+        <div class="grid-4 mb-6">
+          <div class="metric-card"><div class="metric-icon green"><i class="fa-solid fa-euro-sign"></i></div><div><div class="metric-value">€14.2k</div><div class="metric-label">Ingresos totales</div><div class="metric-change up">▲ +18%</div></div></div>
+          <div class="metric-card"><div class="metric-icon blue"><i class="fa-solid fa-repeat"></i></div><div><div class="metric-value">89%</div><div class="metric-label">Retención</div><div class="metric-change up">▲ +4%</div></div></div>
+          <div class="metric-card"><div class="metric-icon orange"><i class="fa-solid fa-dumbbell"></i></div><div><div class="metric-value">486</div><div class="metric-label">Sesiones completadas</div><div class="metric-change up">▲ +22</div></div></div>
+          <div class="metric-card"><div class="metric-icon purple"><i class="fa-solid fa-user-plus"></i></div><div><div class="metric-value">+11</div><div class="metric-label">Nuevos clientes</div><div class="metric-change up">▲ este semestre</div></div></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h5 style="margin-bottom:20px;">Ingresos mensuales (€)</h5>
+            <div class="bar-chart">
+              <div class="bar-wrap"><div class="bar" style="height:55%;background:var(--primary-light);"></div><div class="bar-label">Dic</div></div>
+              <div class="bar-wrap"><div class="bar" style="height:65%;background:var(--primary-light);"></div><div class="bar-label">Ene</div></div>
+              <div class="bar-wrap"><div class="bar" style="height:72%;background:var(--primary-light);"></div><div class="bar-label">Feb</div></div>
+              <div class="bar-wrap"><div class="bar" style="height:80%;background:var(--primary-light);"></div><div class="bar-label">Mar</div></div>
+              <div class="bar-wrap"><div class="bar" style="height:88%;background:var(--primary-light);"></div><div class="bar-label">Abr</div></div>
+              <div class="bar-wrap"><div class="bar accent" style="height:100%;"></div><div class="bar-label">May</div></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:.8125rem;color:var(--text-muted);margin-top:4px;">
+              <span>€1.800 (dic)</span>
+              <span style="font-weight:700;color:var(--primary);">€2.840 (may) ↑</span>
+            </div>
+          </div>
+          <div class="card">
+            <h5 style="margin-bottom:20px;">Distribución de disciplinas</h5>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div><div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">Musculación</span><span style="color:var(--text-muted);">38%</span></div><div class="progress-bar"><div class="progress-fill primary" style="width:38%;"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">Funcional</span><span style="color:var(--text-muted);">24%</span></div><div class="progress-bar"><div class="progress-fill" style="width:24%;"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">HIIT</span><span style="color:var(--text-muted);">18%</span></div><div class="progress-bar"><div class="progress-fill blue" style="width:18%;background:#3b82f6;"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">Crossfit</span><span style="color:var(--text-muted);">12%</span></div><div class="progress-bar"><div class="progress-fill" style="width:12%;background:#f59e0b;"></div></div></div>
+              <div><div style="display:flex;justify-content:space-between;font-size:.875rem;margin-bottom:6px;"><span class="font-medium">Otros</span><span style="color:var(--text-muted);">8%</span></div><div class="progress-bar"><div class="progress-fill" style="width:8%;background:#a855f7;"></div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2 mt-4">
+          <div class="card">
+            <h5 style="margin-bottom:16px;">Retención de clientes</h5>
+            <div style="display:flex;align-items:center;justify-content:center;flex-direction:column;padding:20px 0;">
+              <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(var(--accent-dark) 0% 89%, var(--border) 89% 100%);display:flex;align-items:center;justify-content:center;position:relative;">
+                <div style="width:90px;height:90px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                  <div style="font-size:1.5rem;font-weight:900;color:var(--primary);">89%</div>
+                  <div style="font-size:.7rem;color:var(--text-muted);">retención</div>
+                </div>
+              </div>
+              <p style="margin-top:16px;font-size:.875rem;">De cada 10 clientes, <strong style="color:var(--text);">9 renuevan</strong> su plan al mes siguiente.</p>
+            </div>
+          </div>
+          <div class="card">
+            <h5 style="margin-bottom:16px;">Modalidad de sesiones</h5>
+            <div style="display:flex;flex-direction:column;gap:12px;padding:8px 0;">
+              <div style="display:flex;align-items:center;gap:12px;">
+                <span class="badge badge-blue" style="width:90px;justify-content:center;">Online</span>
+                <div class="progress-bar" style="flex:1;"><div class="progress-fill blue" style="width:62%;background:#3b82f6;"></div></div>
+                <span style="font-size:.875rem;font-weight:600;color:var(--text);min-width:32px;">62%</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;">
+                <span class="badge badge-accent" style="width:90px;justify-content:center;">Presencial</span>
+                <div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:38%;"></div></div>
+                <span style="font-size:.875rem;font-weight:600;color:var(--text);min-width:32px;">38%</span>
+              </div>
+            </div>
+            <hr class="divider">
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div class="flex justify-between text-sm"><span class="text-muted">Sesiones esta semana</span><strong>14</strong></div>
+              <div class="flex justify-between text-sm"><span class="text-muted">Media por semana</span><strong>16.2</strong></div>
+              <div class="flex justify-between text-sm"><span class="text-muted">Récord (feb)</span><strong>22</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== MENSAJES ===== -->
+      <section class="section" id="sec-mensajes">
+        <div class="section-header mb-4">
+          <h3>Mensajes</h3>
+          <button class="btn btn-primary btn-sm"><i class="fa-solid fa-pen"></i> Nuevo mensaje</button>
+        </div>
+        <div class="chat-layout">
+          <div class="chat-list">
+            <div class="chat-list-header">
+              <div class="input-search">
+                <span class="search-icon"><i class="fa-solid fa-search" style="font-size:.8rem;"></i></span>
+                <input type="text" class="input" style="padding:8px 8px 8px 32px;font-size:.875rem;" placeholder="Buscar...">
+              </div>
+            </div>
+            <div class="chat-item active" onclick="selectChat(this, 'marta')">
+              <img src="https://i.pravatar.cc/42?img=47" class="avatar avatar-md" alt="">
+              <div class="chat-item-info">
+                <div class="chat-item-name">Marta García</div>
+                <div class="chat-item-preview">¡Perfecto, nos vemos mañana!</div>
+              </div>
+              <div class="chat-item-meta">
+                <div class="chat-item-time">12:34</div>
+                <span class="notif-dot" style="margin-top:4px;">2</span>
+              </div>
+            </div>
+            <div class="chat-item" onclick="selectChat(this, 'ana')">
+              <img src="https://i.pravatar.cc/42?img=5" class="avatar avatar-md" alt="">
+              <div class="chat-item-info">
+                <div class="chat-item-name">Ana Ruiz</div>
+                <div class="chat-item-preview">¿Cuándo podemos empezar?</div>
+              </div>
+              <div class="chat-item-meta">
+                <div class="chat-item-time">11:20</div>
+                <span class="notif-dot" style="margin-top:4px;">1</span>
+              </div>
+            </div>
+            <div class="chat-item" onclick="selectChat(this, 'roberto')">
+              <img src="https://i.pravatar.cc/42?img=32" class="avatar avatar-md" alt="">
+              <div class="chat-item-info">
+                <div class="chat-item-name">Roberto Díaz</div>
+                <div class="chat-item-preview">Enviada propuesta de precio</div>
+              </div>
+              <div class="chat-item-meta"><div class="chat-item-time">Ayer</div></div>
+            </div>
+            <div class="chat-item" onclick="selectChat(this, 'sofia')">
+              <img src="https://i.pravatar.cc/42?img=20" class="avatar avatar-md" alt="">
+              <div class="chat-item-info">
+                <div class="chat-item-name">Sofía López</div>
+                <div class="chat-item-preview">Gracias por el plan de esta semana</div>
+              </div>
+              <div class="chat-item-meta"><div class="chat-item-time">Lun</div></div>
+            </div>
+            <div class="chat-item" onclick="selectChat(this, 'elena')">
+              <img src="https://i.pravatar.cc/42?img=9" class="avatar avatar-md" alt="">
+              <div class="chat-item-info">
+                <div class="chat-item-name">Elena Morales <span class="badge badge-yellow" style="font-size:.65rem;padding:1px 6px;margin-left:4px;">Nueva</span></div>
+                <div class="chat-item-preview">Hola, me interesa empezar...</div>
+              </div>
+              <div class="chat-item-meta"><div class="chat-item-time">Dom</div></div>
+            </div>
+          </div>
+          <div class="chat-area">
+            <div class="chat-header">
+              <img src="https://i.pravatar.cc/42?img=47" class="avatar avatar-md" alt="">
+              <div>
+                <div style="font-weight:700;">Marta García</div>
+                <div style="font-size:.8125rem;color:var(--success);display:flex;align-items:center;gap:4px;"><span class="dot dot-green"></span> En línea</div>
+              </div>
+              <div class="flex gap-2 ml-auto">
+                <button class="icon-btn" title="Llamada"><i class="fa-solid fa-video"></i></button>
+                <button class="icon-btn" title="Perfil"><i class="fa-solid fa-user"></i></button>
+              </div>
+            </div>
+            <div class="chat-messages">
+              <div class="message theirs"><div class="message-bubble">Hola Carlos! ¿Seguimos mañana con el entreno de pierna?</div><div class="message-time">09:14</div></div>
+              <div class="message mine"><div class="message-bubble">¡Claro que sí! Mañana a las 9:00 como siempre. Prepárate para sentirte las piernas 🔥</div><div class="message-time">09:17</div></div>
+              <div class="message theirs"><div class="message-bubble">Jaja perfecto. Oye, ¿me puedes enviar el plan de esta semana?</div><div class="message-time">09:20</div></div>
+              <div class="message mine"><div class="message-bubble">Te lo mando ahora mismo. Esta semana vamos a añadir volumen en sentadilla y peso muerto. Ya verás los resultados 💪</div><div class="message-time">09:22</div></div>
+              <div class="message theirs"><div class="message-bubble">¡Genial! Por cierto, quería preguntarte si puedes hacer el miércoles a las 18:00 en vez de 16:00</div><div class="message-time">12:31</div></div>
+              <div class="message mine"><div class="message-bubble">Sí, el miércoles a las 18:00 me viene bien. Lo apunto en la agenda ✅</div><div class="message-time">12:33</div></div>
+              <div class="message theirs"><div class="message-bubble">¡Perfecto, nos vemos mañana! 😊</div><div class="message-time">12:34</div></div>
+            </div>
+            <div class="chat-input-area">
+              <textarea class="chat-input" placeholder="Escribe un mensaje..." rows="1" onkeydown="sendMessage(event)"></textarea>
+              <button class="btn btn-outline btn-sm" onclick="showProposalModal()" title="Enviar propuesta de precio"><i class="fa-solid fa-tag"></i></button>
+              <button class="btn btn-primary" onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== NOTIFICACIONES ===== -->
+      <section class="section" id="sec-notificaciones">
+        <div class="section-header">
+          <h3>Notificaciones</h3>
+          <button class="btn btn-ghost btn-sm">Marcar todo como leído</button>
+        </div>
+        <div class="card">
+          <div style="font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;">Nuevas</div>
+          <div class="notif-item unread">
+            <div class="notif-icon-wrap money"><i class="fa-solid fa-euro-sign"></i></div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Marta García</strong> realizó el pago de su plan mensual</div>
+              <div class="notif-time">Hace 12 min · <strong style="color:var(--success);">+€89</strong></div>
+            </div>
+            <span class="dot dot-green" style="margin-top:6px;"></span>
+          </div>
+          <div class="notif-item unread">
+            <div class="notif-icon-wrap user"><i class="fa-solid fa-user-plus"></i></div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Elena Morales</strong> está interesada en contratarte — ha visto tu perfil 3 veces</div>
+              <div class="notif-time">Hace 1h · Nuevo potencial cliente</div>
+            </div>
+            <span class="dot dot-green" style="margin-top:6px;"></span>
+          </div>
+          <div class="notif-item unread">
+            <div class="notif-icon-wrap msg"><i class="fa-solid fa-comment"></i></div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Ana Ruiz</strong> te ha enviado un mensaje nuevo</div>
+              <div class="notif-time">Hace 2h</div>
+            </div>
+            <span class="dot dot-green" style="margin-top:6px;"></span>
+          </div>
+          <div class="notif-item unread">
+            <div class="notif-icon-wrap alert"><i class="fa-solid fa-clock"></i></div>
+            <div class="notif-content">
+              <div class="notif-text">La semana de prueba de <strong>Carmen Vega</strong> expira en 2 días — considera contactarla para convertirla</div>
+              <div class="notif-time">Hace 3h · Recordatorio</div>
+            </div>
+            <span class="dot dot-green" style="margin-top:6px;"></span>
+          </div>
+
+          <hr class="divider">
+          <div style="font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:12px;">Anteriores</div>
+
+          <div class="notif-item">
+            <div class="notif-icon-wrap money"><i class="fa-solid fa-euro-sign"></i></div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Sofía López</strong> renovó su plan trimestral</div>
+              <div class="notif-time">Ayer · <strong style="color:var(--success);">+€240</strong></div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon-wrap user"><i class="fa-solid fa-star"></i></div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Roberto Díaz</strong> te dejó una reseña de 5 estrellas</div>
+              <div class="notif-time">Ayer · ★★★★★</div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon-wrap money"><i class="fa-solid fa-euro-sign"></i></div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Luis Fernández</strong> realizó el pago de su plan mensual</div>
+              <div class="notif-time">Hace 3 días · <strong style="color:var(--success);">+€99</strong></div>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div class="notif-icon-wrap alert"><i class="fa-solid fa-clock"></i></div>
+            <div class="notif-content">
+              <div class="notif-text">Próxima sesión con <strong>Marta García</strong> mañana a las 09:00</div>
+              <div class="notif-time">Hace 4 días · Recordatorio</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PERFIL PÚBLICO ===== -->
+      <section class="section" id="sec-perfil">
+        <div class="section-header">
+          <div>
+            <h3>Mi perfil público</h3>
+            <p style="margin-top:2px;">Así te ven los clientes potenciales</p>
+          </div>
+          <div class="flex gap-2">
+            <a href="trainer-profile-public.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-eye"></i> Vista previa</a>
+            <button class="btn btn-primary btn-sm" id="saveProfileBtn" onclick="saveProfile()"><i class="fa-solid fa-floppy-disk"></i> Guardar cambios</button>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div class="card">
+              <h5 style="margin-bottom:16px;">Foto y portada</h5>
+              <div style="background:linear-gradient(135deg,var(--primary),var(--primary-light));height:100px;border-radius:var(--radius-sm);margin-bottom:-20px;position:relative;">
+                <button class="btn btn-sm" style="position:absolute;right:8px;top:8px;background:rgba(0,0,0,.3);color:#fff;border:none;backdrop-filter:blur(4px);">Cambiar portada</button>
+              </div>
+              <div style="display:flex;align-items:flex-end;gap:12px;padding-left:16px;margin-bottom:16px;">
+                <div style="position:relative;">
+                  <img src="https://i.pravatar.cc/80?img=15" class="avatar avatar-xl" style="border:3px solid var(--surface);box-shadow:var(--shadow);" alt="">
+                  <button class="btn btn-sm" style="position:absolute;bottom:-4px;right:-4px;width:26px;height:26px;padding:0;border-radius:50%;background:var(--primary);color:var(--accent);justify-content:center;font-size:.75rem;"><i class="fa-solid fa-camera"></i></button>
+                </div>
+              </div>
+              <div class="input-group"><label>Nombre completo</label><input type="text" class="input" value="Carlos Méndez Ortega"></div>
+            </div>
+            <div class="card">
+              <h5 style="margin-bottom:16px;">Información personal</h5>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div class="input-group"><label>Título profesional</label><input type="text" class="input" value="Entrenador Personal Certificado · 8 años de experiencia"></div>
+                <div class="input-group"><label>Ubicación</label><input type="text" class="input" value="Madrid, España"></div>
+                <div class="input-group"><label>Biografía</label><textarea class="input" rows="4">Soy entrenador personal certificado con más de 8 años de experiencia. Me especializo en musculación, entrenamiento funcional y programas de pérdida de peso. He trabajado con más de 150 clientes y mi mayor satisfacción es ver sus transformaciones. Creo en la constancia y en adaptar el entrenamiento a la vida de cada persona.</textarea></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div class="card">
+              <h5 style="margin-bottom:16px;">Disciplinas</h5>
+              <div class="tag-list mb-3">
+                <span class="badge badge-primary" style="gap:6px;">Musculación <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;color:var(--primary);font-size:.875rem;line-height:1;padding:0;">×</button></span>
+                <span class="badge badge-primary" style="gap:6px;">Funcional <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;color:var(--primary);font-size:.875rem;line-height:1;padding:0;">×</button></span>
+                <span class="badge badge-primary" style="gap:6px;">HIIT <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;color:var(--primary);font-size:.875rem;line-height:1;padding:0;">×</button></span>
+                <span class="badge badge-primary" style="gap:6px;">Crossfit <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;color:var(--primary);font-size:.875rem;line-height:1;padding:0;">×</button></span>
+              </div>
+              <div class="flex gap-2">
+                <input type="text" class="input" id="newDiscipline" placeholder="Nueva disciplina..." style="flex:1;">
+                <button class="btn btn-outline btn-sm" onclick="addDiscipline()">Añadir</button>
+              </div>
+            </div>
+            <div class="card">
+              <h5 style="margin-bottom:16px;">Modalidad y configuración</h5>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Clases online</span></label>
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Clases presenciales</span></label>
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Semana de prueba gratuita</span></label>
+                <label class="toggle"><input type="checkbox"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Perfil visible en búsquedas</span></label>
+              </div>
+            </div>
+            <div class="card">
+              <h5 style="margin-bottom:16px;">Galería</h5>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+                <div style="aspect-ratio:1;border-radius:var(--radius-sm);overflow:hidden;"><img src="https://picsum.photos/seed/gym1/100/100" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+                <div style="aspect-ratio:1;border-radius:var(--radius-sm);overflow:hidden;"><img src="https://picsum.photos/seed/gym2/100/100" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+                <div style="aspect-ratio:1;border-radius:var(--radius-sm);overflow:hidden;"><img src="https://picsum.photos/seed/sport1/100/100" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+                <div style="aspect-ratio:1;border-radius:var(--radius-sm);overflow:hidden;"><img src="https://picsum.photos/seed/sport2/100/100" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+                <div style="aspect-ratio:1;background:var(--surface-2);border:2px dashed var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-light);font-size:1.25rem;"><i class="fa-solid fa-plus"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== AJUSTES ===== -->
+      <section class="section" id="sec-ajustes">
+        <div class="section-header">
+          <h3>Ajustes</h3>
+        </div>
+        <div class="grid-2" style="align-items:start;">
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div class="card">
+              <h5 style="margin-bottom:16px;"><i class="fa-solid fa-user" style="margin-right:8px;color:var(--text-muted);"></i>Cuenta</h5>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div class="input-group"><label>Email</label><input type="email" class="input" value="carlos.mendez@email.com"></div>
+                <div class="input-group"><label>Teléfono</label><input type="tel" class="input" value="+34 612 345 678"></div>
+                <button class="btn btn-outline btn-sm" style="align-self:flex-start;">Cambiar contraseña</button>
+              </div>
+            </div>
+            <div class="card">
+              <h5 style="margin-bottom:16px;"><i class="fa-solid fa-credit-card" style="margin-right:8px;color:var(--text-muted);"></i>Método de cobro</h5>
+              <div style="padding:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <i class="fa-brands fa-cc-stripe" style="font-size:1.5rem;color:#635bff;"></i>
+                <div style="flex:1;"><div style="font-weight:600;">Stripe conectado</div><div style="font-size:.8125rem;color:var(--text-muted);">Pagos procesados con Stripe · Activo</div></div>
+                <span class="badge badge-accent">Activo</span>
+              </div>
+              <button class="btn btn-outline btn-sm">Gestionar en Stripe</button>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div class="card">
+              <h5 style="margin-bottom:16px;"><i class="fa-solid fa-bell" style="margin-right:8px;color:var(--text-muted);"></i>Notificaciones</h5>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Cobros recibidos</span></label>
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Mensajes nuevos</span></label>
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Nuevos clientes interesados</span></label>
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Recordatorio prueba a expirar</span></label>
+                <label class="toggle"><input type="checkbox"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Newsletter y novedades</span></label>
+              </div>
+            </div>
+            <div class="card">
+              <h5 style="margin-bottom:16px;"><i class="fa-solid fa-shield-halved" style="margin-right:8px;color:var(--text-muted);"></i>Privacidad</h5>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Perfil público visible</span></label>
+                <label class="toggle"><input type="checkbox" checked><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Aparecer en búsquedas</span></label>
+                <label class="toggle"><input type="checkbox"><span class="toggle-track"><span class="toggle-thumb"></span></span><span class="toggle-label">Mostrar número de clientes</span></label>
+              </div>
+              <hr class="divider">
+              <button class="btn btn-danger btn-sm"><i class="fa-solid fa-triangle-exclamation"></i> Eliminar cuenta</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- end page-content -->
+  </main>
+</div><!-- end app-layout -->
+
+<!-- Proposal Modal -->
+<div class="modal-overlay" id="proposalModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal" style="max-width:380px;">
+    <div class="modal-header">
+      <h4>Propuesta de precio</h4>
+      <button class="modal-close" onclick="document.getElementById('proposalModal').classList.remove('open')">✕</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <p style="font-size:.9375rem;">Envía una propuesta de precio personalizada a Marta. Ella podrá aceptarla o negociarla desde el chat.</p>
+      <div class="input-group"><label>Importe (€)</label><input type="number" class="input" placeholder="Ej. 95" id="proposalAmount"></div>
+      <div class="input-group"><label>Periodo</label>
+        <select class="input">
+          <option>Mensual</option>
+          <option>Trimestral</option>
+          <option>Por sesión</option>
+          <option>Personalizado</option>
+        </select>
+      </div>
+      <div class="input-group"><label>Nota opcional</label><input type="text" class="input" placeholder="Incluye plan de nutrición..."></div>
+      <button class="btn btn-primary btn-full" onclick="sendProposal()"><i class="fa-solid fa-paper-plane"></i> Enviar propuesta</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const sections = {
+    'inicio':        { el: 'sec-inicio',         title: 'Inicio' },
+    'clientes':      { el: 'sec-clientes',        title: 'Mis clientes' },
+    'agenda':        { el: 'sec-agenda',          title: 'Agenda' },
+    'planes':        { el: 'sec-planes',          title: 'Planes y pagos' },
+    'estadisticas':  { el: 'sec-estadisticas',    title: 'Estadísticas' },
+    'mensajes':      { el: 'sec-mensajes',        title: 'Mensajes' },
+    'notificaciones':{ el: 'sec-notificaciones',  title: 'Notificaciones' },
+    'perfil':        { el: 'sec-perfil',          title: 'Mi perfil público' },
+    'ajustes':       { el: 'sec-ajustes',         title: 'Ajustes' },
+  };
+
+  function showSection(key, navEl) {
+    Object.values(sections).forEach(s => document.getElementById(s.el).classList.remove('active'));
+    document.getElementById(sections[key].el).classList.add('active');
+    document.getElementById('topbarTitle').textContent = sections[key].title;
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    if (navEl) navEl.classList.add('active');
+    else {
+      document.querySelectorAll('.nav-item').forEach(n => {
+        if (n.getAttribute('onclick') && n.getAttribute('onclick').includes("'" + key + "'")) n.classList.add('active');
+      });
+    }
+    window.scrollTo(0, 0);
+  }
+
+  function filterClients(q) {
+    document.querySelectorAll('#clientsTable tbody tr').forEach(tr => {
+      tr.style.display = tr.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+    });
+  }
+
+  function filterByStatus(status, btn) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('#clientsTable tbody tr').forEach(tr => {
+      tr.style.display = (status === 'todos' || tr.dataset.status === status) ? '' : 'none';
+    });
+  }
+
+  function selectChat(el, name) {
+    document.querySelectorAll('.chat-item').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function sendChatMessage() {
+    const ta = document.querySelector('.chat-input');
+    const txt = ta.value.trim();
+    if (!txt) return;
+    const msgs = document.querySelector('.chat-messages');
+    const div = document.createElement('div');
+    div.className = 'message mine';
+    div.innerHTML = `<div class="message-bubble">${txt}</div><div class="message-time">${new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})}</div>`;
+    msgs.appendChild(div);
+    ta.value = '';
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function sendMessage(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
+  }
+
+  function showProposalModal() { document.getElementById('proposalModal').classList.add('open'); }
+
+  function sendProposal() {
+    const amount = document.getElementById('proposalAmount').value;
+    if (!amount) return;
+    document.getElementById('proposalModal').classList.remove('open');
+    const msgs = document.querySelector('.chat-messages');
+    const div = document.createElement('div');
+    div.className = 'message mine';
+    div.innerHTML = `<div class="proposal-card"><div class="proposal-label">💰 Propuesta de precio</div><div class="proposal-amount">€${amount}<span style="font-size:.875rem;font-weight:500;color:var(--text-muted);">/mes</span></div><div class="proposal-actions"><button class="btn btn-accent btn-sm" style="pointer-events:none;opacity:.7;">Esperando respuesta...</button></div></div><div class="message-time">${new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function addDiscipline() {
+    const input = document.getElementById('newDiscipline');
+    const val = input.value.trim();
+    if (!val) return;
+    const list = document.querySelector('.tag-list');
+    const span = document.createElement('span');
+    span.className = 'badge badge-primary';
+    span.style.gap = '6px';
+    span.innerHTML = `${val} <button onclick="this.parentElement.remove()" style="background:none;border:none;cursor:pointer;color:var(--primary);font-size:.875rem;line-height:1;padding:0;">×</button>`;
+    list.appendChild(span);
+    input.value = '';
+  }
+
+  function saveProfile() {
+    const btn = document.getElementById('saveProfileBtn');
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> Guardado';
+    btn.classList.add('btn-accent');
+    btn.classList.remove('btn-primary');
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar cambios';
+      btn.classList.remove('btn-accent');
+      btn.classList.add('btn-primary');
+    }, 2000);
+  }
+</script>
+</body>
+</html>
