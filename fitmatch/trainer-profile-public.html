@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Méndez — Entrenador Personal | FitMatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--bg); }
+    .profile-wrapper { max-width: 860px; margin: 0 auto; padding: 0 20px 80px; }
+    .floating-sidebar { position: sticky; top: 76px; }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="back-bar">
+  <button class="back-btn" onclick="history.back()">
+    <i class="fa-solid fa-arrow-left"></i> Volver al buscador
+  </button>
+  <span style="color:var(--border);">|</span>
+  <span class="page-name">Carlos Méndez · Perfil público</span>
+  <div class="ml-auto flex gap-2">
+    <button class="btn btn-outline btn-sm"><i class="fa-solid fa-share-nodes"></i> Compartir</button>
+    <a href="index.html">
+      <div class="nav-logo" style="gap:7px;">
+        <div class="logo-mark" style="width:28px;height:28px;font-size:.85rem;">F</div>
+        <span class="logo-name" style="font-size:.9375rem;">Fit<span>Match</span></span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div style="padding:24px 24px 0;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start;">
+
+    <!-- Left: main profile -->
+    <div>
+      <!-- Cover + avatar -->
+      <div style="position:relative;border-radius:var(--radius-lg) var(--radius-lg) 0 0;overflow:hidden;">
+        <div class="profile-cover">
+          <img src="https://picsum.photos/seed/fitnessbg/900/200" style="width:100%;height:100%;object-fit:cover;opacity:.4;" alt="">
+        </div>
+        <div class="profile-avatar-wrap">
+          <img src="https://i.pravatar.cc/120?img=15" class="avatar avatar-2xl" alt="Carlos Méndez">
+        </div>
+      </div>
+
+      <!-- Info area -->
+      <div class="profile-main">
+        <div class="profile-info-area">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+            <div>
+              <h2 class="profile-name">Carlos Méndez</h2>
+              <p style="color:var(--text-muted);margin-top:4px;font-size:.9375rem;">Entrenador Personal Certificado · 8 años de experiencia</p>
+              <div class="tag-list mt-3">
+                <span class="badge badge-primary">🏋️ Musculación</span>
+                <span class="badge badge-primary">⚡ Funcional</span>
+                <span class="badge badge-primary">🔥 HIIT</span>
+                <span class="badge badge-primary">💪 Crossfit</span>
+                <span class="badge badge-blue">💻 Online</span>
+                <span class="badge badge-accent">📍 Presencial</span>
+              </div>
+            </div>
+            <span class="badge badge-yellow" style="font-size:.875rem;padding:6px 14px;">🎁 1 semana gratis</span>
+          </div>
+          <div class="profile-stats-row mt-4">
+            <div class="profile-stat">
+              <div class="val">4.9</div>
+              <div class="lbl">★ Valoración</div>
+            </div>
+            <div style="width:1px;background:var(--border);height:40px;"></div>
+            <div class="profile-stat">
+              <div class="val">87</div>
+              <div class="lbl">Clientes activos</div>
+            </div>
+            <div style="width:1px;background:var(--border);height:40px;"></div>
+            <div class="profile-stat">
+              <div class="val">62</div>
+              <div class="lbl">Reseñas</div>
+            </div>
+            <div style="width:1px;background:var(--border);height:40px;"></div>
+            <div class="profile-stat">
+              <div class="val">&lt;1h</div>
+              <div class="lbl">Resp. media</div>
+            </div>
+            <div style="width:1px;background:var(--border);height:40px;"></div>
+            <div class="profile-stat">
+              <div class="val">98%</div>
+              <div class="lbl">Satisfacción</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:12px;font-size:.875rem;color:var(--text-muted);">
+            <i class="fa-solid fa-location-dot"></i> Madrid, España
+            <span style="margin:0 6px;">·</span>
+            <span class="dot dot-green"></span> Disponible ahora
+            <span style="margin:0 6px;">·</span>
+            <i class="fa-solid fa-shield-check" style="color:var(--accent-dark);"></i> Perfil verificado
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div style="padding:0 36px;">
+          <div class="tab-row">
+            <button class="tab-btn active" onclick="switchTab('sobre', this)">Sobre mí</button>
+            <button class="tab-btn" onclick="switchTab('planes', this)">Planes</button>
+            <button class="tab-btn" onclick="switchTab('galeria', this)">Galería</button>
+            <button class="tab-btn" onclick="switchTab('resenas', this)">Reseñas <span style="font-size:.8rem;color:var(--text-light);">(62)</span></button>
+          </div>
+        </div>
+
+        <!-- Tab: Sobre mí -->
+        <div class="tab-panel active" id="tab-sobre">
+          <div class="profile-section">
+            <h5 style="margin-bottom:12px;">Sobre mí</h5>
+            <p style="line-height:1.8;color:var(--text-muted);font-size:.9375rem;">
+              Soy entrenador personal certificado con más de 8 años de experiencia. Me especializo en musculación, entrenamiento funcional y programas de pérdida de peso. He trabajado con más de 150 clientes y mi mayor satisfacción es ver sus transformaciones.
+            </p>
+            <p style="line-height:1.8;color:var(--text-muted);font-size:.9375rem;margin-top:12px;">
+              Creo en la constancia y en adaptar el entrenamiento a la vida de cada persona. No existe un programa universal: tu plan debe encajar con tu horario, objetivos y nivel de experiencia.
+            </p>
+          </div>
+          <div class="profile-section">
+            <h5 style="margin-bottom:16px;">Disciplinas que imparto</h5>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--primary-50);border-radius:var(--radius-sm);border:1px solid #b7ddc9;">
+                <span style="font-size:1.25rem;">🏋️</span>
+                <div><div style="font-weight:600;">Musculación</div><div style="font-size:.8125rem;color:var(--text-muted);">Hipertrofia y fuerza</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--primary-50);border-radius:var(--radius-sm);border:1px solid #b7ddc9;">
+                <span style="font-size:1.25rem;">⚡</span>
+                <div><div style="font-weight:600;">Funcional</div><div style="font-size:.8125rem;color:var(--text-muted);">Movilidad y rendimiento</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--primary-50);border-radius:var(--radius-sm);border:1px solid #b7ddc9;">
+                <span style="font-size:1.25rem;">🔥</span>
+                <div><div style="font-weight:600;">HIIT</div><div style="font-size:.8125rem;color:var(--text-muted);">Alta intensidad</div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:12px;background:var(--primary-50);border-radius:var(--radius-sm);border:1px solid #b7ddc9;">
+                <span style="font-size:1.25rem;">💪</span>
+                <div><div style="font-weight:600;">Crossfit</div><div style="font-size:.8125rem;color:var(--text-muted);">Variado y competitivo</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Planes -->
+        <div class="tab-panel" id="tab-planes">
+          <div class="profile-section">
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
+              <div class="plan-card featured">
+                <div class="plan-badge-top"><span class="badge badge-accent">Más popular</span></div>
+                <h5>Plan Mensual</h5>
+                <div class="plan-price mt-3"><sup>€</sup>89</div>
+                <div class="plan-period">al mes</div>
+                <div class="plan-features">
+                  <div class="plan-feature"><span class="check">✓</span> 4 sesiones por semana</div>
+                  <div class="plan-feature"><span class="check">✓</span> Online o presencial</div>
+                  <div class="plan-feature"><span class="check">✓</span> Plan de entrenamiento personalizado</div>
+                  <div class="plan-feature"><span class="check">✓</span> Seguimiento semanal</div>
+                  <div class="plan-feature"><span class="check">✓</span> Mensajería directa</div>
+                </div>
+                <button class="btn btn-primary btn-full mt-4" onclick="openContactModal()">Elegir plan mensual</button>
+              </div>
+              <div class="plan-card">
+                <h5>Plan Trimestral</h5>
+                <div class="plan-price mt-3"><sup>€</sup>240</div>
+                <div class="plan-period">cada 3 meses <span style="color:var(--success);font-size:.8125rem;font-weight:700;">Ahorra €27</span></div>
+                <div class="plan-features">
+                  <div class="plan-feature"><span class="check">✓</span> Todo lo del plan mensual</div>
+                  <div class="plan-feature"><span class="check">✓</span> Plan de nutrición básico</div>
+                  <div class="plan-feature"><span class="check">✓</span> Análisis de progreso mensual</div>
+                  <div class="plan-feature"><span class="check">✓</span> Acceso a vídeos exclusivos</div>
+                  <div class="plan-feature"><span class="check">✓</span> Prioridad en la agenda</div>
+                </div>
+                <button class="btn btn-outline btn-full mt-4" onclick="openContactModal()">Elegir plan trimestral</button>
+              </div>
+            </div>
+            <div class="card mt-4" style="background:var(--yellow-bg);border-color:var(--yellow-border);">
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span style="font-size:1.5rem;">🎁</span>
+                <div style="flex:1;">
+                  <div style="font-weight:700;color:var(--yellow-text);">1 semana de prueba gratuita disponible</div>
+                  <div style="font-size:.875rem;color:var(--yellow-text);opacity:.8;margin-top:2px;">Sin compromiso. Empieza mañana mismo y decide después.</div>
+                </div>
+                <button class="btn btn-sm" style="background:var(--yellow-text);color:#fff;" onclick="openContactModal()">Empezar gratis</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Galería -->
+        <div class="tab-panel" id="tab-galeria">
+          <div class="profile-section">
+            <div class="gallery-grid">
+              <div class="gallery-item"><img src="https://picsum.photos/seed/fit1/300/300" alt=""></div>
+              <div class="gallery-item"><img src="https://picsum.photos/seed/gym3/300/300" alt=""></div>
+              <div class="gallery-item"><img src="https://picsum.photos/seed/sport3/300/300" alt=""></div>
+              <div class="gallery-item"><img src="https://picsum.photos/seed/workout1/300/300" alt=""></div>
+              <div class="gallery-item"><img src="https://picsum.photos/seed/fitness2/300/300" alt=""></div>
+              <div class="gallery-item"><img src="https://picsum.photos/seed/train1/300/300" alt=""></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Reseñas -->
+        <div class="tab-panel" id="tab-resenas">
+          <div class="profile-section">
+            <div style="display:flex;align-items:center;gap:28px;margin-bottom:24px;padding:20px;background:var(--primary-50);border-radius:var(--radius);border:1px solid #b7ddc9;">
+              <div style="text-align:center;">
+                <div style="font-size:3rem;font-weight:900;color:var(--primary);line-height:1;">4.9</div>
+                <div class="stars" style="font-size:1.125rem;">★★★★★</div>
+                <div style="font-size:.8125rem;color:var(--text-muted);margin-top:4px;">62 reseñas</div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;align-items:center;gap:8px;font-size:.875rem;"><span style="width:20px;text-align:right;color:var(--text-muted);">5</span><span style="color:var(--warning);">★</span><div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:85%;background:var(--warning);"></div></div><span style="color:var(--text-muted);min-width:28px;">85%</span></div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:.875rem;"><span style="width:20px;text-align:right;color:var(--text-muted);">4</span><span style="color:var(--warning);">★</span><div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:10%;background:var(--warning);"></div></div><span style="color:var(--text-muted);min-width:28px;">10%</span></div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:.875rem;"><span style="width:20px;text-align:right;color:var(--text-muted);">3</span><span style="color:var(--warning);">★</span><div class="progress-bar" style="flex:1;"><div class="progress-fill" style="width:5%;background:var(--warning);"></div></div><span style="color:var(--text-muted);min-width:28px;">5%</span></div>
+              </div>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <img src="https://i.pravatar.cc/36?img=47" class="avatar" style="width:36px;height:36px;" alt="">
+                <span class="review-name">Marta García</span>
+                <div class="stars" style="font-size:.875rem;">★★★★★</div>
+                <span class="review-date">Mayo 2025</span>
+              </div>
+              <p class="review-text">"Carlos es increíble. Llevo 6 meses con él y he cambiado por completo. Muy profesional, siempre puntual y con mucho conocimiento. Te motiva cuando más lo necesitas. 100% recomendado."</p>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <img src="https://i.pravatar.cc/36?img=32" class="avatar" style="width:36px;height:36px;" alt="">
+                <span class="review-name">Roberto Díaz</span>
+                <div class="stars" style="font-size:.875rem;">★★★★★</div>
+                <span class="review-date">Abril 2025</span>
+              </div>
+              <p class="review-text">"Gran entrenador. Adapta los ejercicios perfectamente a mi nivel y mis limitaciones físicas. El seguimiento semanal es muy útil para ver el progreso."</p>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <img src="https://i.pravatar.cc/36?img=20" class="avatar" style="width:36px;height:36px;" alt="">
+                <span class="review-name">Sofía López</span>
+                <div class="stars" style="font-size:.875rem;">★★★★★</div>
+                <span class="review-date">Marzo 2025</span>
+              </div>
+              <p class="review-text">"Empecé con la semana gratis sin esperar nada especial y me quedé encantada. Ya llevo 4 meses y he perdido 8kg de forma saludable. ¡Mejor inversión que he hecho!"</p>
+            </div>
+            <div class="review-item">
+              <div class="review-header">
+                <img src="https://i.pravatar.cc/36?img=60" class="avatar" style="width:36px;height:36px;" alt="">
+                <span class="review-name">Luis Fernández</span>
+                <div class="stars" style="font-size:.875rem;">★★★★☆</div>
+                <span class="review-date">Febrero 2025</span>
+              </div>
+              <p class="review-text">"Muy buen entrenador, siempre disponible para resolver dudas. Los entrenamientos son duros pero efectivos. Solo le falta un poco más de variedad en los ejercicios."</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end profile-main -->
+    </div>
+
+    <!-- Right: contact card -->
+    <div>
+      <div class="card floating-sidebar" style="padding:0;overflow:hidden;">
+        <div style="padding:20px 20px 16px;border-bottom:1px solid var(--border);">
+          <div style="font-size:1.625rem;font-weight:900;color:var(--primary);">€89<span style="font-size:.9rem;font-weight:500;color:var(--text-muted);">/mes</span></div>
+          <div style="font-size:.8125rem;color:var(--text-muted);margin-top:2px;">Desde · Ver todos los planes</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:10px;font-size:.875rem;">
+            <div class="stars" style="font-size:.875rem;">★★★★★</div>
+            <span style="font-weight:700;">4.9</span>
+            <span style="color:var(--text-muted);">(62 reseñas)</span>
+          </div>
+        </div>
+        <div style="padding:16px 20px;border-bottom:1px solid var(--border);background:var(--yellow-bg);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:1.1rem;">🎁</span>
+            <div>
+              <div style="font-weight:700;font-size:.9rem;color:var(--yellow-text);">Semana gratis disponible</div>
+              <div style="font-size:.78rem;color:var(--yellow-text);opacity:.8;">7 días sin compromiso</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <button class="btn btn-primary btn-full" onclick="openContactModal()">
+            <i class="fa-solid fa-comments"></i> Contactar a Carlos
+          </button>
+          <button class="btn btn-accent btn-full" style="color:var(--primary-dark);" onclick="openContactModal()">
+            <i class="fa-solid fa-gift"></i> Empezar semana gratis
+          </button>
+        </div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;justify-content:space-between;font-size:.875rem;">
+            <span style="color:var(--text-muted);">Tiempo de respuesta</span>
+            <span style="font-weight:600;">&lt; 1 hora</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.875rem;">
+            <span style="color:var(--text-muted);">Disponibilidad</span>
+            <span style="color:var(--success);font-weight:600;">● Disponible</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.875rem;">
+            <span style="color:var(--text-muted);">Modalidad</span>
+            <span style="font-weight:600;">Online y presencial</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.875rem;">
+            <span style="color:var(--text-muted);">Ubicación</span>
+            <span style="font-weight:600;">Madrid</span>
+          </div>
+        </div>
+        <div style="padding:14px 20px;border-top:1px solid var(--border);font-size:.8125rem;color:var(--text-muted);text-align:center;">
+          <i class="fa-solid fa-shield-check" style="color:var(--accent-dark);"></i>
+          Pago seguro · Cancela cuando quieras
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Contact / Chat Modal -->
+<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <div class="modal-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <img src="https://i.pravatar.cc/42?img=15" class="avatar avatar-md" alt="">
+        <div>
+          <h4 style="margin-bottom:2px;">Contactar a Carlos</h4>
+          <div style="font-size:.8125rem;color:var(--text-muted);">Te responderá en menos de 1h</div>
+        </div>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('open')">✕</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="input-group">
+        <label>Tu nombre</label>
+        <input type="text" class="input" placeholder="Ana García">
+      </div>
+      <div class="input-group">
+        <label>Tu objetivo</label>
+        <select class="input">
+          <option>Perder peso</option>
+          <option>Ganar músculo</option>
+          <option>Mejorar la condición física</option>
+          <option>Rehabilitación</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>Mensaje</label>
+        <textarea class="input" rows="3" placeholder="Hola Carlos, me interesa empezar a entrenar contigo..."></textarea>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="window.location='client-dashboard.html'">
+        <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
+      </button>
+      <div style="text-align:center;font-size:.8125rem;color:var(--text-light);">Al contactar aceptas los <a href="#" style="color:var(--primary);">Términos de uso</a> de FitMatch.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+  }
+  function openContactModal() { document.getElementById('contactModal').classList.add('open'); }
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitMatch — Buscar entrenadores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Client nav -->
+<nav class="client-nav">
+  <a href="index.html">
+    <div class="flex items-center gap-2">
+      <div style="width:30px;height:30px;background:var(--primary);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:900;font-size:.95rem;">F</div>
+      <span style="font-size:1.0625rem;font-weight:800;color:var(--text);">Fit<span style="color:var(--primary);">Match</span></span>
+    </div>
+  </a>
+  <div class="flex items-center gap-2 ml-auto">
+    <a href="client-dashboard.html" class="btn btn-outline btn-sm"><i class="fa-solid fa-user"></i> Mi cuenta</a>
+  </div>
+</nav>
+
+<!-- Search hero -->
+<div class="search-hero">
+  <div class="container">
+    <h2>Encuentra tu entrenador perfecto</h2>
+    <p>Más de 2.400 entrenadores disponibles · Filtra por disciplina, precio, modalidad y más</p>
+    <div class="search-bar-big">
+      <input type="text" id="searchInput" placeholder="🔍 Buscar por nombre, disciplina o ciudad..." oninput="applyFilters()">
+      <button class="btn btn-accent" style="color:var(--primary-dark);padding:14px 24px;" onclick="applyFilters()">
+        <i class="fa-solid fa-search"></i> Buscar
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Quick chips -->
+<div style="background:var(--primary);border-bottom:1px solid rgba(255,255,255,.1);padding:12px 0;">
+  <div class="container">
+    <div class="chip-row">
+      <button class="chip active" style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;" onclick="quickFilter('', this)">Todos</button>
+      <button class="chip" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);" onclick="quickFilter('musculacion', this)">🏋️ Musculación</button>
+      <button class="chip" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);" onclick="quickFilter('funcional', this)">⚡ Funcional</button>
+      <button class="chip" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);" onclick="quickFilter('hiit', this)">🔥 HIIT</button>
+      <button class="chip" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);" onclick="quickFilter('yoga', this)">🧘 Yoga</button>
+      <button class="chip" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);" onclick="quickFilter('pilates', this)">🌀 Pilates</button>
+      <button class="chip" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);" onclick="quickFilter('crossfit', this)">💪 Crossfit</button>
+      <button class="chip" style="border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);" onclick="quickFilter('natacion', this)">🏊 Natación</button>
+    </div>
+  </div>
+</div>
+
+<!-- Main search layout -->
+<div class="container" style="padding-top:28px;padding-bottom:48px;">
+  <div class="search-layout">
+
+    <!-- Filters sidebar -->
+    <aside class="filter-sidebar">
+      <div class="card" style="padding:20px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+          <h5>Filtros</h5>
+          <button class="btn btn-ghost btn-sm" onclick="clearFilters()" style="font-size:.8125rem;color:var(--text-muted);">Limpiar</button>
+        </div>
+
+        <div class="filter-section">
+          <h6>Disciplina</h6>
+          <label class="filter-option"><input type="checkbox" value="musculacion" onchange="applyFilters()"> Musculación</label>
+          <label class="filter-option"><input type="checkbox" value="funcional" onchange="applyFilters()"> Funcional</label>
+          <label class="filter-option"><input type="checkbox" value="hiit" onchange="applyFilters()"> HIIT</label>
+          <label class="filter-option"><input type="checkbox" value="yoga" onchange="applyFilters()"> Yoga</label>
+          <label class="filter-option"><input type="checkbox" value="pilates" onchange="applyFilters()"> Pilates</label>
+          <label class="filter-option"><input type="checkbox" value="crossfit" onchange="applyFilters()"> Crossfit</label>
+          <label class="filter-option"><input type="checkbox" value="natacion" onchange="applyFilters()"> Natación</label>
+        </div>
+
+        <hr class="divider">
+        <div class="filter-section">
+          <h6>Modalidad</h6>
+          <label class="filter-option"><input type="checkbox" value="online" onchange="applyFilters()"> Online</label>
+          <label class="filter-option"><input type="checkbox" value="presencial" onchange="applyFilters()"> Presencial</label>
+        </div>
+
+        <hr class="divider">
+        <div class="filter-section">
+          <h6>Precio mensual (€)</h6>
+          <div class="range-inputs">
+            <input type="number" class="input" id="priceMin" placeholder="0" min="0" oninput="applyFilters()" style="padding:8px 10px;font-size:.875rem;">
+            <span>—</span>
+            <input type="number" class="input" id="priceMax" placeholder="300" min="0" oninput="applyFilters()" style="padding:8px 10px;font-size:.875rem;">
+          </div>
+        </div>
+
+        <hr class="divider">
+        <div class="filter-section">
+          <h6>Valoración mínima</h6>
+          <label class="filter-option"><input type="radio" name="rating" value="0" checked onchange="applyFilters()"> Cualquier valoración</label>
+          <label class="filter-option"><input type="radio" name="rating" value="4" onchange="applyFilters()"> ★★★★ 4+ estrellas</label>
+          <label class="filter-option"><input type="radio" name="rating" value="4.5" onchange="applyFilters()"> ★★★★★ 4.5+ estrellas</label>
+        </div>
+
+        <hr class="divider">
+        <div class="filter-section">
+          <h6>Ofertas especiales</h6>
+          <label class="filter-option"><input type="checkbox" id="filterFree" onchange="applyFilters()"> Solo con semana gratis</label>
+        </div>
+
+        <hr class="divider">
+        <div class="filter-section">
+          <h6>Ubicación</h6>
+          <select class="input" id="filterCity" onchange="applyFilters()" style="font-size:.875rem;padding:8px 32px 8px 10px;">
+            <option value="">Toda España</option>
+            <option value="madrid">Madrid</option>
+            <option value="barcelona">Barcelona</option>
+            <option value="valencia">Valencia</option>
+            <option value="sevilla">Sevilla</option>
+          </select>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Results -->
+    <div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px;">
+        <div id="resultsCount" style="font-size:.9375rem;color:var(--text-muted);">Mostrando <strong style="color:var(--text);">8</strong> entrenadores</div>
+        <div class="flex items-center gap-2">
+          <span style="font-size:.875rem;color:var(--text-muted);">Ordenar por:</span>
+          <select class="input" id="sortSelect" onchange="applyFilters()" style="padding:8px 32px 8px 10px;font-size:.875rem;width:auto;">
+            <option value="rating">Más valorados</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="trainersGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;">
+        <!-- Cards rendered by JS -->
+      </div>
+
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">🔍</div>
+        <h4>Sin resultados</h4>
+        <p>Prueba con otros filtros o una búsqueda diferente.</p>
+        <button class="btn btn-outline mt-3" onclick="clearFilters()">Limpiar filtros</button>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" style="display:flex;justify-content:center;gap:8px;margin-top:32px;">
+        <button class="btn btn-outline btn-sm" disabled><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="btn btn-primary btn-sm">1</button>
+        <button class="btn btn-outline btn-sm">2</button>
+        <button class="btn btn-outline btn-sm">3</button>
+        <button class="btn btn-outline btn-sm"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const trainers = [
+  { id:1, name:'Carlos Méndez', city:'Madrid', disciplines:['musculacion','funcional','hiit','crossfit'], modalidad:['online','presencial'], price:89, rating:4.9, reviews:62, clients:87, free:true, avatar:'https://i.pravatar.cc/60?img=15', cover:'https://picsum.photos/seed/gym1/400/140', bio:'Especialista en musculación y funcional con 8 años de experiencia.', response:'< 1h' },
+  { id:2, name:'Sara González', city:'Barcelona', disciplines:['pilates','yoga','funcional'], modalidad:['online','presencial'], price:75, rating:4.8, reviews:48, clients:62, free:true, avatar:'https://i.pravatar.cc/60?img=19', cover:'https://picsum.photos/seed/yoga1/400/140', bio:'Instructora certificada de Pilates y Yoga. Especialista en embarazadas.', response:'< 2h' },
+  { id:3, name:'Miguel Torres', city:'Madrid', disciplines:['crossfit','hiit','funcional'], modalidad:['presencial'], price:99, rating:4.7, reviews:35, clients:45, free:false, avatar:'https://i.pravatar.cc/60?img=53', cover:'https://picsum.photos/seed/cross1/400/140', bio:'Crossfit Level 2. Competidor nacional con metodología científica.', response:'< 3h' },
+  { id:4, name:'Laura Vega', city:'Valencia', disciplines:['yoga','pilates'], modalidad:['online'], price:55, rating:4.9, reviews:71, clients:120, free:true, avatar:'https://i.pravatar.cc/60?img=44', cover:'https://picsum.photos/seed/yog2/400/140', bio:'Yoga y mindfulness. Sesiones 100% online. Más de 4 años de experiencia.', response:'< 1h' },
+  { id:5, name:'Andrés Ruiz', city:'Sevilla', disciplines:['natacion','funcional'], modalidad:['presencial','online'], price:80, rating:4.6, reviews:29, clients:38, free:true, avatar:'https://i.pravatar.cc/60?img=67', cover:'https://picsum.photos/seed/swim1/400/140', bio:'Exnadador profesional. Entrenamiento en piscina y funcional seco.', response:'< 2h' },
+  { id:6, name:'Cristina Morales', city:'Barcelona', disciplines:['musculacion','hiit'], modalidad:['online','presencial'], price:85, rating:4.8, reviews:54, clients:73, free:false, avatar:'https://i.pravatar.cc/60?img=25', cover:'https://picsum.photos/seed/mus1/400/140', bio:'Especialista en transformación corporal femenina. Nutricionista deportiva.', response:'< 1h' },
+  { id:7, name:'Pablo Fernández', city:'Madrid', disciplines:['crossfit','musculacion','funcional'], modalidad:['presencial'], price:110, rating:4.5, reviews:21, clients:30, free:false, avatar:'https://i.pravatar.cc/60?img=57', cover:'https://picsum.photos/seed/sport4/400/140', bio:'Preparador físico de alto rendimiento. Metodología basada en periodización.', response:'< 4h' },
+  { id:8, name:'Elena Castillo', city:'Valencia', disciplines:['pilates','yoga','funcional'], modalidad:['online'], price:60, rating:4.9, reviews:88, clients:140, free:true, avatar:'https://i.pravatar.cc/60?img=36', cover:'https://picsum.photos/seed/pil1/400/140', bio:'Pilates clínico y yoga terapéutico. Especializada en dolor de espalda y rehabilitación.', response:'< 1h' },
+];
+
+let activeQuickFilter = '';
+
+function renderCard(t) {
+  return `
+    <div class="trainer-card" onclick="window.location='trainer-profile-public.html'">
+      <div class="trainer-card-cover">
+        <img src="${t.cover}" alt="${t.name}">
+        ${t.free ? `<div class="free-badge"><span class="badge badge-yellow">🎁 1 sem. gratis</span></div>` : ''}
+      </div>
+      <div class="trainer-card-body">
+        <div class="trainer-card-avatar">
+          <img src="${t.avatar}" class="avatar avatar-lg" alt="${t.name}">
+        </div>
+        <div class="trainer-card-name">${t.name}</div>
+        <div style="font-size:.8125rem;color:var(--text-muted);margin-top:2px;"><i class="fa-solid fa-location-dot" style="font-size:.75rem;"></i> ${t.city}</div>
+        <div class="trainer-card-tags">
+          ${t.disciplines.slice(0,3).map(d => `<span class="badge badge-primary" style="font-size:.7rem;">${d.charAt(0).toUpperCase()+d.slice(1)}</span>`).join('')}
+          ${t.modalidad.includes('online') ? `<span class="badge badge-blue" style="font-size:.7rem;">Online</span>` : ''}
+        </div>
+        <div class="trainer-card-stats">
+          <span><i class="fa-solid fa-star" style="color:#f59e0b;font-size:.8rem;"></i> <strong>${t.rating}</strong> (${t.reviews})</span>
+          <span><i class="fa-solid fa-users" style="font-size:.8rem;"></i> ${t.clients} clientes</span>
+          <span><i class="fa-solid fa-clock" style="font-size:.8rem;"></i> ${t.response}</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:12px;">
+          <div class="trainer-card-price">€${t.price}<span>/mes</span></div>
+          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();window.location='trainer-profile-public.html'">Ver perfil</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function applyFilters() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const checkedDisciplines = [...document.querySelectorAll('input[type=checkbox][value]:not([id])')]
+    .filter(c => c.checked && !['online','presencial'].includes(c.value)).map(c => c.value);
+  const checkedModalidad = [...document.querySelectorAll('input[value=online],input[value=presencial]')]
+    .filter(c => c.checked).map(c => c.value);
+  const priceMin = parseFloat(document.getElementById('priceMin').value) || 0;
+  const priceMax = parseFloat(document.getElementById('priceMax').value) || Infinity;
+  const minRating = parseFloat(document.querySelector('input[name=rating]:checked').value) || 0;
+  const onlyFree = document.getElementById('filterFree').checked;
+  const city = document.getElementById('filterCity').value;
+  const sort = document.getElementById('sortSelect').value;
+
+  let results = trainers.filter(t => {
+    if (q && !t.name.toLowerCase().includes(q) && !t.disciplines.some(d => d.includes(q)) && !t.city.toLowerCase().includes(q)) return false;
+    if (activeQuickFilter && !t.disciplines.includes(activeQuickFilter) && t.modalidad && !t.modalidad.includes(activeQuickFilter)) return false;
+    if (checkedDisciplines.length && !checkedDisciplines.some(d => t.disciplines.includes(d))) return false;
+    if (checkedModalidad.length && !checkedModalidad.some(m => t.modalidad.includes(m))) return false;
+    if (t.price < priceMin || t.price > priceMax) return false;
+    if (t.rating < minRating) return false;
+    if (onlyFree && !t.free) return false;
+    if (city && !t.city.toLowerCase().includes(city)) return false;
+    return true;
+  });
+
+  if (sort === 'rating') results.sort((a,b) => b.rating - a.rating);
+  else if (sort === 'price-asc') results.sort((a,b) => a.price - b.price);
+  else if (sort === 'price-desc') results.sort((a,b) => b.price - a.price);
+
+  const grid = document.getElementById('trainersGrid');
+  const empty = document.getElementById('emptyState');
+  grid.innerHTML = results.map(renderCard).join('');
+  empty.classList.toggle('hidden', results.length > 0);
+  document.getElementById('resultsCount').innerHTML = `Mostrando <strong style="color:var(--text);">${results.length}</strong> entrenador${results.length !== 1 ? 'es' : ''}`;
+}
+
+function quickFilter(tag, btn) {
+  document.querySelectorAll('.search-hero + div .chip').forEach(c => {
+    c.style.background = 'rgba(255,255,255,.1)';
+    c.style.borderColor = 'rgba(255,255,255,.3)';
+    c.style.color = 'rgba(255,255,255,.8)';
+  });
+  btn.style.background = 'rgba(255,255,255,.25)';
+  btn.style.borderColor = 'rgba(255,255,255,.6)';
+  btn.style.color = '#fff';
+  activeQuickFilter = tag;
+  applyFilters();
+}
+
+function clearFilters() {
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('input[type=checkbox]').forEach(c => c.checked = false);
+  document.querySelectorAll('input[name=rating]')[0].checked = true;
+  document.getElementById('priceMin').value = '';
+  document.getElementById('priceMax').value = '';
+  document.getElementById('filterCity').value = '';
+  activeQuickFilter = '';
+  applyFilters();
+}
+
+applyFilters();
+</script>
+</body>
+</html>
